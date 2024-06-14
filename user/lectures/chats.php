@@ -69,6 +69,7 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
   <div id="header">
     <div id="top">
       <a href=""><img src="../../img/<?php echo $logo; ?>" alt="W0rm" style="height: 80px"></a>
+      
       <div id="usermenu">
         <div style="float:right">
           <span><?php echo $_SESSION["name"];?></span>
