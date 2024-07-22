@@ -119,8 +119,8 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
      $_SESSION['id_lectures'] = $id_lectures;
      echo <<< data
         <div style="margin-left: 40%">
-            <a href="./news.php?id_lectures=$id_lectures" id="add-btn">News</a>
-            <a href="" id="add-btn" style="background-color: #c2c0ca; color: #eaeaea">Chats</a>
+            <a href="./news.php?id_lectures=$id_lectures" id="add-btn" style="background-color: #aaaaaa; color: #eaeaea">News</a>
+            <a href="" id="add-btn">Chats</a>
         </div>
       data;
      ?>
@@ -161,7 +161,7 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
       }
     ?>
     <!-- Add news box -->
-    <div id="addBox" class="box-add" style="background: white ; margin-bottom: 60px; margin-top: 100px; position: -webkit-sticky; position: sticky; bottom: 10px">
+    <div id="addBox" class="box-add" style="margin-bottom: 60px; margin-top: 20px; position: -webkit-sticky; position: sticky; bottom: 10px">
       <img src="data:image/png;base64,<?php echo $avatar; ?>" style="border-radius: 50%; height: 50px; width: 50px">
       <button id="addNewsBtn" class="button" onclick=submitForm()>Send message</button>
     </div>

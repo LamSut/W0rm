@@ -119,8 +119,8 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
      $_SESSION['id_lectures'] = $id_lectures;
      echo <<< data
         <div style="margin-left: 40%">
-          <a href="" id="add-btn" style="background-color: #c2c0ca">News</a>
-          <a href="./chats.php?id_lectures=$id_lectures" id="add-btn">Chats</a>
+          <a href="" id="add-btn">News</a>
+          <a href="./chats.php?id_lectures=$id_lectures" id="add-btn" style="background-color: #aaaaaa; color: #eaeaea">Chats</a>
         </div>
       data;
      ?>

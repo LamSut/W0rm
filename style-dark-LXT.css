@@ -42,8 +42,9 @@
   }
   
   .box-add {
+    background-image: linear-gradient(to left, #222222, #2e2e2e, #3c4b06);
     border: 2px;
-    border-radius: 10px;
+    border-radius: 30px;
     margin-top: 20px;
     padding: 20px;
     box-shadow: 0px 2px 2px 0px #000000;
@@ -54,6 +55,7 @@
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
     flex-direction: row;
+    z-index: 1;
   }
   .box-add label {
     margin-left: 7px;
