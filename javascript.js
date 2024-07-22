@@ -29,3 +29,26 @@ function usermenu() {
   }
   document.addEventListener('click', hideOnClickOutside);
 }
+
+function edit_delete() {
+  var editdeleteContent = document.getElementById("edit-delete");
+  var btnEditDelete = document.getElementsById("btn-edit-delete");
+
+  if (editdeleteContent.style.display === "block") {
+    editdeleteContent.style.display = "none";
+  } else {
+    editdeleteContent.style.display = "block";
+  }
+
+  // remove previous listener if it exists (prevents stacking)
+  document.removeEventListener('click', hideOnClickOutside);
+  // hide on outside click
+  function hideOnClickOutside(event) {
+    if (!btnEditDelete.contains(event.target)) { // check if clicking outside usermenu
+      editdeleteContent.style.display = "none";
+    }
+  }
+  document.addEventListener('click', hideOnClickOutside);
+
+
+}

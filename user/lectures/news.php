@@ -113,79 +113,50 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
       $resultLecture->close();
     ?>
 
-    <!-- Back to view tab -->
-    
-    <?php
+    <!-- 2 Tabs -->
+     <?php
      $id_lectures = $_GET['id_lectures'];
      $_SESSION['id_lectures'] = $id_lectures;
      echo <<< data
         <div style="margin-left: 40%">
-            <a href="./news.php?id_lectures=$id_lectures" id="add-btn">News</a>
-            <a href="" id="add-btn" style="background-color: #c2c0ca">Chats</a>
+          <a href="" id="add-btn" style="background-color: #c2c0ca">News</a>
+          <a href="./chats.php?id_lectures=$id_lectures" id="add-btn">Chats</a>
         </div>
       data;
      ?>
-   
+
   <!-- print message -->
   <?php
-      $stmtXXX = $db -> prepare("SELECT ch.*, a.avatar, a.name
-        FROM chats ch
-        INNER JOIN acc a ON ch.idacc = a.idacc
-        WHERE ch.id_lectures_chats = ?
-        ORDER BY ch.timeSend ASC");
+      $stmtXXX = $db -> prepare("SELECT nf.*, a.avatar, a.name
+        FROM newsfeed nf
+        INNER JOIN acc a ON nf.idacc = a.idacc
+        WHERE nf.id_lectures = ?
+        ORDER BY nf.timeSend DESC");
       $stmtXXX -> bind_param("s", $id_lectures);
       $stmtXXX -> execute();
       $resultXXX = $stmtXXX -> get_result();
 
-      $current_idacc = $_COOKIE['idacc'];
       if($resultXXX->num_rows > 0){
         while($row = $resultXXX->fetch_assoc()){
           $avatar = base64_encode($row['avatar']);
-          if ($current_idacc == $row['idacc']){
-            echo <<< data
-              <div id="boxchat">
-                <div class="author">
-                  <img src="data:image/png;base64,$avatar" style="border-radius: 50%; height: 50px; width: 50px">
-                  <p style="margin: 5px 10px 0px 15px">
-                    <b style="font-size: 22px">$row[name]</b>
-                  <br>
-                    <i style="font-size: 15px">$row[timeSend]</i>
-                  </p>
-                  <a href='./delete-chat-action.php?del=$row[idchats]' id="removeBtn" data-title="Delete message">
-                      X
-                  </a>
-                </div>
-                <div class="message" style="font-size: 18px; margin-left:4px">
-                  $row[textChats]
-                </div>
+          echo <<< data
+            <div id="boxchat" style="margin-top: 20px">
+              <div class="author">
+                <img src="data:image/png;base64,$avatar" style="border-radius: 50%; height: 50px; width: 50px">
+                <p style="margin: 5px 10px 0px 15px">
+                  <b style="font-size: 22px">$row[name]</b>
+                <br>
+                  <i style="font-size: 15px">$row[timeSend]</i>
+                </p>
               </div>
-            data;
-          }
-          else {
-            echo <<< data
-              <div id="boxchat">
-                <div class="author">
-                  <img src="data:image/png;base64,$avatar" style="border-radius: 50%; height: 50px; width: 50px">
-                  <p style="margin: 5px 10px 0px 15px">
-                    <b style="font-size: 22px">$row[name]</b>
-                  <br>
-                    <i style="font-size: 15px">$row[timeSend]</i>
-                  </p>
-                </div>
-                <div class="message" style="font-size: 18px; margin-left:4px">
-                  $row[textChats]
-                </div>
+              <div class="message" style="font-size: 18px; margin-left:4px">
+                $row[textNews]
               </div>
-            data;
-          }
+            </div>
+          data;
         }
       }
     ?>
-    <!-- Add news box -->
-    <div id="addBox" class="box-add" style="background: white ; margin-bottom: 60px; margin-top: 20px; position: -webkit-sticky; position: sticky; bottom: 10px">
-      <img src="data:image/png;base64,<?php echo $avatar; ?>" style="border-radius: 50%; height: 50px; width: 50px">
-      <button id="addNewsBtn" class="button" onclick=submitForm()>Send message</button>
-    </div>
   </div>
   
   <script src="../../javascript.js"></script>
@@ -194,14 +165,14 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
       const btnChange = document.getElementById('addNewsBtn');
       const replacement = document.createElement('form'); // Create form element to replace button
 
-      replacement.setAttribute('id', 'addChatsForm'); // Set form ID
+      replacement.setAttribute('id', 'addNewsForm'); // Set form ID
       replacement.setAttribute('method', 'post');
       replacement.setAttribute('class', 'form');
       btnChange.replaceWith(replacement);
 
       const textEle = document.createElement('textarea');
-      textEle.setAttribute('id', 'textChats');
-      textEle.setAttribute('name', 'textChats');
+      textEle.setAttribute('id', 'textNews');
+      textEle.setAttribute('name', 'textNews');
       textEle.setAttribute('rows', '3');
       textEle.setAttribute('cols', '120');
       textEle.setAttribute('placeholder', 'Enter message');
@@ -232,16 +203,19 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
   </script>
     <?php
       if(isset($_GET['id_lectures'])) {
-        if (isset($_POST['sendForm']) && !empty($_POST['textChats'])) {
-          $textChats = $_POST['textChats']; 
+        if (isset($_POST['sendForm']) && !empty($_POST['textNews'])) {
+          $textNews = $_POST['textNews']; 
           $idacc = $_COOKIE['idacc'];
           date_default_timezone_set("Asia/Ho_Chi_Minh");
           $id_lectures = $_GET['id_lectures'];
-          $stmt = $db -> prepare ("INSERT INTO chats (idacc, textChats, timeSend, id_lectures_chats) VALUES (?, ?, sysdate(), ?)");
-          $stmt -> bind_param("sss", $idacc, $textChats, $id_lectures);
+          $stmt = $db -> prepare ("INSERT INTO newsfeed (idacc, textNews, timeSend, id_lectures) VALUES (?, ?, sysdate(), ?)");
+          $stmt -> bind_param("sss", $idacc, $textNews, $id_lectures);
           $stmt -> execute();
-        
-          echo '<script>window.location.href = "./chats.php?id_lectures=' . $id_lectures .'";</script>'; // Redirect to page
+          // header('Location: ./news.php' . '?id_lecturess=' . $id_lectures);
+
+          echo '<script>window.location.href = "./news.php?id_lectures=' . $id_lectures .'";</script>'; // Redirect to page
+          // echo '<script>window.location.replace("http://localhost/w0rm/user/lectures/news.php?id_lecturess=' . $id_lectures . '")</script>';
+          // exit();
         }
       } else {
         echo "No lecture found";

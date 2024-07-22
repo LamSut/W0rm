@@ -82,6 +82,9 @@
     color:#168d8d;
     transition: all 0.5s ease;
   }
+  input#submit-btn, button#cancel-btn {
+    left: 15px;
+  }
   a#removeBtn {
     appearance: button;
     margin-left: auto;
@@ -118,6 +121,14 @@
     margin: 0px 20px 0px 15px;
     width: 100%;
     padding: 8px;
+    font-size: 18px;
+  }
+
+  #textChats {
+    color:#000000;
+    margin: 0px 20px 0px 15px;
+    padding: 8px;
+    width: 97%;
     font-size: 18px;
   }
   /* end LXT */
