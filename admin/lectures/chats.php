@@ -40,9 +40,13 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
 }
   $username = $_COOKIE["idacc"];
   $_SESSION['idacc'] = $username;
-  $stmt = $db->prepare("select * from acc where idacc = ?");
+
+  $id_lectures = $_GET['id_lectures'];
+
+  $stmt = $db->prepare("SELECT * from acc where idacc = ?");
   $stmt->bind_param("s", $username);
   $stmt->execute();
+
   $result = $stmt->get_result();
   $row = $result->fetch_assoc();
   $avatar = base64_encode($row['avatar']);
@@ -52,11 +56,11 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
 <html>
 
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="refresh">
-<link rel="stylesheet" href="../../<?php echo $style; ?>?v=<?php echo time(); ?>">
-<link rel="stylesheet" href="../../<?php echo $styleLXT; ?>?v=<?php echo time(); ?>">
-<title>Lectures</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="refresh">
+  <link rel="stylesheet" href="../../<?php echo $style; ?>?v=<?php echo time(); ?>">
+  <link rel="stylesheet" href="../../<?php echo $styleLXT; ?>?v=<?php echo time(); ?>">
+  <title>Lectures</title>
 </head>
 
 <body>
@@ -89,43 +93,51 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
   
   <div id="news-content">
     <?php
-      $idlecture = $_GET['idlectures'];
-      $sql = "SELECT title FROM lectures WHERE id_lectures= $idlecture";
-      $result = $db->query($sql); // Execute the query and store the result
+
+      $stmtLecture = $db -> prepare ("SELECT title FROM lectures WHERE id_lectures = ?");
+      $stmtLecture -> bind_param("s", $id_lectures);
+      $stmtLecture -> execute(); // Execute the query and store the result
+      $resultLecture = $stmtLecture -> get_result(); 
 
       // Check if there are any results
-      if ($result->num_rows > 0) {
-        $row = $result->fetch_assoc(); // Fetch the first row as an associative array
+      if ($resultLecture->num_rows > 0) {
+        $row = $resultLecture->fetch_assoc(); // Fetch the first row as an associative array
         $title = $row['title']; // Extract the 'title' value from the row
         echo "<h3> $title </h3>";
       } else {
-        echo "<h3> No lecture found with id: $idlecture <h3>"; // Handle no results case
+        echo "<h3> No lecture found with id: $id_lectures <h3>"; // Handle no results case
       }
 
       // Close the result set (optional, recommended practice)
-      $result->close();
+      $resultLecture->close();
     ?>
 
-    <div id="addBox" class="box-add" style="margin-bottom: 60px;">
-      <img src="data:image/png;base64,<?php echo $avatar; ?>" style="border-radius: 50%; height: 50px; width: 50px">
-      <button id="addNewsBtn" class="button" onclick=submitForm()>Add news</button>
-    </div>
+    <!-- Back to view tab -->
     
-    <!-- <div id="upFile" class="box-add" style="margin-bottom: 60px;">
-      <img src="../../img/upload-icon.webp" width="35px" style="border-radius: 50%;">
-      <button id="addNewsBtn" class="button">Upload files</button>
-    </div> -->
+    <?php
+     $id_lectures = $_GET['id_lectures'];
+     $_SESSION['id_lectures'] = $id_lectures;
+     echo <<< data
+        <div style="margin-left: 40%">
+            <a href="./news.php?id_lectures=$id_lectures" id="add-btn">News</a>
+            <a href="" id="add-btn" style="background-color: #c2c0ca; color: #eaeaea">Chats</a>
+        </div>
+      data;
+     ?>
    
   <!-- print message -->
   <?php
-      $sql = "SELECT nf.*, a.avatar, a.name
-        FROM newsfeed nf
-        INNER JOIN acc a ON nf.idacc = a.idacc
-        WHERE nf.id_lectures = $idlecture
-        ORDER BY nf.timeSend DESC";
-      $result = $db->query($sql);
-      if($result->num_rows > 0){
-        while($row = $result->fetch_assoc()){
+      $stmtXXX = $db -> prepare("SELECT ch.*, a.avatar, a.name
+        FROM chats ch
+        INNER JOIN acc a ON ch.idacc = a.idacc
+        WHERE ch.id_lectures_chats = ?
+        ORDER BY ch.timeSend ASC");
+      $stmtXXX -> bind_param("s", $id_lectures);
+      $stmtXXX -> execute();
+      $resultXXX = $stmtXXX -> get_result();
+
+      if($resultXXX->num_rows > 0){
+        while($row = $resultXXX->fetch_assoc()){
           $avatar = base64_encode($row['avatar']);
           echo <<< data
             <div id="boxchat">
@@ -136,18 +148,23 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
                 <br>
                   <i style="font-size: 15px">$row[timeSend]</i>
                 </p>
-                <a href='?del=$row[idnews]' id="removeBtn" data-title="Delete message">
+                <a href='./delete-chat-action.php?del=$row[idchats]' id="removeBtn" data-title="Delete message">
                     X
                 </a>
               </div>
               <div class="message" style="font-size: 18px; margin-left:4px">
-                $row[textNews]
+                $row[textChats]
               </div>
             </div>
           data;
         }
       }
     ?>
+    <!-- Add news box -->
+    <div id="addBox" class="box-add" style="background: white ; margin-bottom: 60px; margin-top: 100px; position: -webkit-sticky; position: sticky; bottom: 10px">
+      <img src="data:image/png;base64,<?php echo $avatar; ?>" style="border-radius: 50%; height: 50px; width: 50px">
+      <button id="addNewsBtn" class="button" onclick=submitForm()>Send message</button>
+    </div>
   </div>
   
   <script src="../../javascript.js"></script>
@@ -156,14 +173,14 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
       const btnChange = document.getElementById('addNewsBtn');
       const replacement = document.createElement('form'); // Create form element to replace button
 
-      replacement.setAttribute('id', 'addNewsForm'); // Set form ID
+      replacement.setAttribute('id', 'addChatsForm'); // Set form ID
       replacement.setAttribute('method', 'post');
       replacement.setAttribute('class', 'form');
       btnChange.replaceWith(replacement);
 
       const textEle = document.createElement('textarea');
-      textEle.setAttribute('id', 'textNews');
-      textEle.setAttribute('name', 'textNews');
+      textEle.setAttribute('id', 'textChats');
+      textEle.setAttribute('name', 'textChats');
       textEle.setAttribute('rows', '3');
       textEle.setAttribute('cols', '120');
       textEle.setAttribute('placeholder', 'Enter message');
@@ -193,31 +210,17 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
     
   </script>
     <?php
-      if(isset($_GET['idlectures'])) {
-        if (isset($_POST['sendForm']) && !empty($_POST['textNews'])) {
-          $textNews = $_POST['textNews']; 
+      if(isset($_GET['id_lectures'])) {
+        if (isset($_POST['sendForm']) && !empty($_POST['textChats'])) {
+          $textChats = $_POST['textChats']; 
           $idacc = $_COOKIE['idacc'];
           date_default_timezone_set("Asia/Ho_Chi_Minh");
-          $idlecture = $_GET['idlectures'];
-          $sql = "INSERT INTO newsfeed (idacc, textNews, timeSend, id_lectures) VALUES ('$idacc', '$textNews', sysdate(), '$idlecture');";
-          $db->query($sql);
-          echo '<script>window.location.href = "http://localhost/w0rm/admin/lectures/chats.php?idlectures=' . $idlecture .'";</script>'; // Redirect to page
-          // header('Location: http://localhost/w0rm/admin/lectures/chats.php' . '?idlectures=' . $idlecture);
-          // echo '<script>window.location.replace("http://localhost/w0rm/user/lectures/chats.php?idlectures=' . $idlecture . '")</script>';
-          exit();
-        }
-
-        if(isset($_GET['del'])){
-            $idlecture = $_GET['idlectures'];
-            $sql = "DELETE FROM newsfeed WHERE idnews=? AND id_lectures=?";
-            $stmt = mysqli_prepare($db, $sql);
-            mysqli_stmt_bind_param($stmt, "ii", $_GET['del'], $_GET['idlectures']);
-            mysqli_stmt_execute($stmt);
-            mysqli_stmt_close($stmt);
-            
-            // echo '<script>window.location.href = "http://localhost/w0rm/user/lectures/chats.php";</script>'; // Redirect to page
-            echo '<script>window.location.replace("http://localhost/w0rm/admin/lectures/chats.php?idlectures=' . $idlecture . '")</script>';
-            exit();
+          $id_lectures = $_GET['id_lectures'];
+          $stmt = $db -> prepare ("INSERT INTO chats (idacc, textChats, timeSend, id_lectures_chats) VALUES (?, ?, sysdate(), ?)");
+          $stmt -> bind_param("sss", $idacc, $textChats, $id_lectures);
+          $stmt -> execute();
+        
+          echo '<script>window.location.href = "./chats.php?id_lectures=' . $id_lectures .'";</script>'; // Redirect to page
         }
       } else {
         echo "No lecture found";

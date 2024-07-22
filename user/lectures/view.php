@@ -21,8 +21,9 @@ if (!isset($_SESSION['idacc'])){
   }  
 }
 
-if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1){
-  header("location: ../../admin/index.php");
+//check admin or user
+if (!isset($_SESSION['admin'])){
+  header("location: ../../user/index.php");
   exit;
 }
 
@@ -30,14 +31,17 @@ $style = "style.css";
 $styleNDB = "style-NDB.css";
 $logo = "Logo.png";
 $settingBTN = "settings-icon.png";
+$editLectureBTN = "edit-icon.png";
+$deleteLectureBTN = "Delete.png";
 
 if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
   $style = "style-dark.css";
   $styleNDB = "style-dark-NDB.css";
   $logo = "Dark-Logo.png";
   $settingBTN = "Dark-settings-icon.png";
+  $editLectureBTN = "Dark-edit-icon.png";
+  $deleteLectureBTN = "Dark-Delete.png";
 }
-
 ?> 
 
 <!DOCTYPE html>
@@ -46,9 +50,8 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="../../<?php echo $style; ?>?v=<?php echo time(); ?>">
-<!-- ICONS -->
-<link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
 <link rel="stylesheet" href="../../<?php echo $styleNDB; ?>?v=<?php echo time(); ?>">
+<!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" /> -->
 <title>Lectures</title>
 </head>
 
@@ -74,7 +77,7 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
     </div>
     <div id="navbar">
       <a href="../index.php">Home</a>
-      <a class="active" href="">Lectures</a>
+      <a class="active" href="../lectures/view.php">Lectures</a>
       <a href="../challenges/view.php">CTF Challenges</a>
       <a href="../labs/view.php">Labs</a>
     </div>
@@ -86,6 +89,7 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
     <div style="display: flex; justify-content: space-between;">
       <h2>Lectures</h2>
       <form action="" method="get" style="margin: 25px 25px 0px 0px;">
+        <!-- <input id="add-btn" type="submit" value="New Lecture +">   -->
         <input type="text" name="search" id="search-input" placeholder="Search challenges...">
         <input id="search-btn" type="submit" value="Search">  
       </form>
@@ -100,7 +104,7 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
           <!-- <?php
           // while($lecture = $lectures -> fetch_assoc()) {
           //   echo "<a href='" . "'><h5>" . $lecture['title'] . "</h5></a>";
-          //   echo "<p>" . $lecture['describes'] . "</p>";
+          //   echo "<p>" . $lecture['des'] . "</p>";
           //   echo "<hr>";
           // }
           ?> -->
@@ -112,7 +116,7 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
           
           $search = isset($_GET['search']) ? $_GET['search'] : '';  // Get search term from URL
 
-          $stmt = $db->prepare("SELECT id_lectures, title, describes FROM lectures WHERE title LIKE ? ORDER BY id_lectures DESC LIMIT ?, ?");
+          $stmt = $db->prepare("SELECT * FROM lectures WHERE title LIKE ? ORDER BY id_lectures DESC LIMIT ?, ?");
           $search_term = "%$search%"; // Add wildcards for partial matches
           $stmt->bind_param("sss", $search_term, $offset, $limit);
           $stmt->execute();
@@ -120,9 +124,40 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
           
           if ($result->num_rows > 0) {
               while($lecture = $result -> fetch_assoc()) {
-                echo "<a href='http://localhost/w0rm/user/lectures/chats.php?idlectures=" . $lecture['id_lectures'] . "'><h5>" . $lecture['title'] . "</h5></a>";
-                echo "<p>" . $lecture['describes'] . "</p>";
-                echo "<hr>";
+                echo "<div id='link-lecture'>";
+
+                    echo "<div class='head-lecture'>";
+                        echo "<a class='title-lecture' href='news.php?id_lectures=" . $lecture['id_lectures'] . "'>" . $lecture['title'] . "</a>";
+                    echo "</div>";
+
+                    echo "<div class='des'>";
+                      echo "<p>" . $lecture['des'] . "</p>";
+                    echo "</div>";
+                    
+                    echo "<div>";
+
+                      echo "<small class='date-time'>";
+                        echo $lecture['time'];
+                      echo "</small>";
+
+                      echo "<small class='author'>";
+                        $stmtAuthor = $db->prepare("SELECT name from acc where idacc = ?");
+                        $stmtAuthor->bind_param("s", $lecture['idacc']);
+                        $stmtAuthor->execute();
+                        $resultAuthor = $stmtAuthor->get_result();
+
+                        if ($resultAuthor->num_rows > 0) {
+                          $authorname = $resultAuthor->fetch_assoc();
+                          echo " By " . $authorname['name'];  
+                        } else {
+                          echo " By Someone"; 
+                        }
+                        
+
+                      echo "</small>";
+                      echo "<hr>";
+                    echo "</div>";
+                echo "</div>";
             }
           } else {
             echo "<p>No lecture found.</p>";
@@ -133,10 +168,16 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
 
       <!-- </form> -->
     </section>
+    
+    <!-- <?php
+      // for ($page = 1; $page < $number_of_pages; $page++) {
+      //   echo "<a href='" . "'>" . "</a>"
+      // }
+    ?> -->
 
     <?php
 
-      $stmt1 = $db->prepare("SELECT title, describes FROM lectures WHERE title LIKE ?");
+      $stmt1 = $db->prepare("SELECT title, des FROM lectures WHERE title LIKE ?");
       $search_term1 = "%$search%"; // Add wildcards for partial matches
       $stmt1->bind_param("s", $search_term);
 
@@ -220,6 +261,7 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
         
         echo "</div>";
       }
+
     ?>
   </div>
   
