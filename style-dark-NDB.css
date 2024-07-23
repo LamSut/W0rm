@@ -39,6 +39,10 @@
     transition: all 0.5s ease;
   }
 
+  #title_lecture {
+    width: 80%;
+  }
+
   .icon-edit {
     width: 25px;
     height: 25px;

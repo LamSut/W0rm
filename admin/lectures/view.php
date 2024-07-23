@@ -98,16 +98,8 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
     <!-- LECTURES -->
     
     <section class="lecture-container">
-      <!-- <form action="" method="GET"> -->
 
         <div class="lectures">
-          <!-- <?php
-          // while($lecture = $lectures -> fetch_assoc()) {
-          //   echo "<a href='" . "'><h5>" . $lecture['title'] . "</h5></a>";
-          //   echo "<p>" . $lecture['des'] . "</p>";
-          //   echo "<hr>";
-          // }
-          ?> -->
 
           <?php
           $limit = 9;
@@ -130,7 +122,7 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
                     echo "<a class='title-lecture' href='chats.php?id_lectures=" . $lecture['id_lectures'] . "'>" . $lecture['title'] . "</a>";
                     echo "<form action='' class='edit-delete' method='post' id='form-edit-delete'>";
                     echo "<a name='edit' class='icon-edit' href='edit-lecture.php?id_lectures=" .$lecture['id_lectures'] . "'><img class='edit-img' src='../../img/" . $editLectureBTN . "'></a>";
-                    echo "<a onclick=\"return confirm('Are you sure?')\" name='delete' class='icon-edit' href='delete-lecture-action.php?id_lectures=".$lecture['id_lectures'] . "'><img class='delete-img' src='../../img/" . $deleteLectureBTN . "'></a>";
+                    echo "<a onclick=\"return confirm('Do you really want to delete?')\" name='delete' class='icon-edit' href='delete-lecture-action.php?id_lectures=".$lecture['id_lectures'] . "'><img class='delete-img' src='../../img/" . $deleteLectureBTN . "'></a>";
                     echo "</form>";
                     echo "</div>";
                     echo "<div class='des'>";
