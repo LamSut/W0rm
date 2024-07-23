@@ -125,39 +125,36 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
           if ($result->num_rows > 0) {
               while($lecture = $result -> fetch_assoc()) {
                 echo "<div id='link-lecture'>";
-
-                    echo "<div class='head-lecture'>";
-                        echo "<a class='title-lecture' href='news.php?id_lectures=" . $lecture['id_lectures'] . "'>" . $lecture['title'] . "</a>";
-                    echo "</div>";
-
-                    echo "<div class='des'>";
+                  echo "<div class='head-lecture'>";
+                  echo "<a class='title-lecture' href='chats.php?id_lectures=" . $lecture['id_lectures'] . "'>" . $lecture['title'] . "</a>";
+                  echo "</div>";
+                  echo "<div class='des'>";
+                    if(strlen($lecture['des']) > 250) {
+                      echo "<p>" . substr($lecture['des'], 0, 250) . "<span id='dots'>...</span>" . "<span id='more' style='display: none;'> ". substr($lecture['des'], 250) ."</span>" . "<span><button style='' id='btn-read-more' onclick= 'toggleContent()'>Read more</button></span>" . "</p>";
+                    } else {
                       echo "<p>" . $lecture['des'] . "</p>";
-                    echo "</div>";
-                    
-                    echo "<div>";
+                    }
+                  echo "</div>";
+                  echo "<div>";
+                  echo "<small class='date-time'>";
+                  echo $lecture['time'];
+                  echo "</small>";
+                  echo "<small id='author' class='author'>";
+                  $stmtAuthor = $db->prepare("SELECT name from acc where idacc = ?");
+                  $stmtAuthor->bind_param("s", $lecture['idacc']);
+                  $stmtAuthor->execute();
+                  $resultAuthor = $stmtAuthor->get_result();
 
-                      echo "<small class='date-time'>";
-                        echo $lecture['time'];
-                      echo "</small>";
-
-                      echo "<small class='author'>";
-                        $stmtAuthor = $db->prepare("SELECT name from acc where idacc = ?");
-                        $stmtAuthor->bind_param("s", $lecture['idacc']);
-                        $stmtAuthor->execute();
-                        $resultAuthor = $stmtAuthor->get_result();
-
-                        if ($resultAuthor->num_rows > 0) {
-                          $authorname = $resultAuthor->fetch_assoc();
-                          echo " By " . $authorname['name'];  
-                        } else {
-                          echo " By Someone"; 
-                        }
-                        
-
-                      echo "</small>";
-                      echo "<hr>";
-                    echo "</div>";
-                echo "</div>";
+                  if ($resultAuthor->num_rows > 0) {
+                    $authorname = $resultAuthor->fetch_assoc();
+                    echo "By " . $authorname['name'];  
+                  } else {
+                    echo "By Someone"; 
+                  }
+                  echo "</small>";
+                  echo "<hr>";
+                  echo "</div>";
+              echo "</div>";
             }
           } else {
             echo "<p>No lecture found.</p>";

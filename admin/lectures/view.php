@@ -127,51 +127,40 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
                 echo "<div id='link-lecture'>";
 
                     echo "<div class='head-lecture'>";
-                        echo "<a class='title-lecture' href='news.php?id_lectures=" . $lecture['id_lectures'] . "'>" . $lecture['title'] . "</a>";
-                    
-                        // echo "<button onclick='edit_delete()' class='edit-btn'><img class='edit-img' src='../../img/" . $editLectureBTN . "'></button>";
-                        //     echo "<div id='edit-delete' class='dropdown-content'>";
-                        //     echo "<a class='edit' href=''>Edit</a>";
-                        //     echo "<a class='delete' href=''>Delete</a>"; 
-                        // echo "</div>";  
-
-                        echo "<form action='' class='edit-delete' method='post' id='form-edit-delete'>";
-                          // echo "<button onclick='' class='icon-edit'><img class='edit-img' src='../../img/" . $editLectureBTN . "'></button>";
-                          // echo "<button onclick='' class='icon-edit'><img class='edit-img' src='../../img/" . $deleteLectureBTN . "'></button>";
-                            echo "<a name='edit' class='icon-edit' href='edit-lecture.php?id_lectures=" .$lecture['id_lectures'] . "'><img class='edit-img' src='../../img/" . $editLectureBTN . "'></a>";
-                            echo "<a name='delete' class='icon-edit' href='delete-lecture-action.php?id_lectures=".$lecture['id_lectures'] . "'><img class='edit-img' src='../../img/" . $deleteLectureBTN . "'></a>";
-                          echo "</form>";
+                    echo "<a class='title-lecture' href='chats.php?id_lectures=" . $lecture['id_lectures'] . "'>" . $lecture['title'] . "</a>";
+                    echo "<form action='' class='edit-delete' method='post' id='form-edit-delete'>";
+                    echo "<a name='edit' class='icon-edit' href='edit-lecture.php?id_lectures=" .$lecture['id_lectures'] . "'><img class='edit-img' src='../../img/" . $editLectureBTN . "'></a>";
+                    echo "<a onclick=\"return confirm('Are you sure?')\" name='delete' class='icon-edit' href='delete-lecture-action.php?id_lectures=".$lecture['id_lectures'] . "'><img class='delete-img' src='../../img/" . $deleteLectureBTN . "'></a>";
+                    echo "</form>";
                     echo "</div>";
-
                     echo "<div class='des'>";
+                    if(strlen($lecture['des']) > 250) {
+                      echo "<p>" . substr($lecture['des'], 0, 250) . "<span id='dots'>...</span>" . "<span id='more' style='display: none;'> ". substr($lecture['des'], 250) ."</span>" . "<span><button style='' id='btn-read-more' onclick= 'toggleContent()'>Read more</button></span>" . "</p>";
+                    } else {
                       echo "<p>" . $lecture['des'] . "</p>";
+                    }
                     echo "</div>";
-                    
                     echo "<div>";
+                    echo "<small class='date-time'>";
+                    echo $lecture['time'];
+                    echo "</small>";
+                    echo "<small id='author' class='author'>";
+                    $stmtAuthor = $db->prepare("SELECT name from acc where idacc = ?");
+                    $stmtAuthor->bind_param("s", $lecture['idacc']);
+                    $stmtAuthor->execute();
+                    $resultAuthor = $stmtAuthor->get_result();
 
-                      echo "<small class='date-time'>";
-                        echo $lecture['time'];
-                      echo "</small>";
-
-                      echo "<small class='author'>";
-                        $stmtAuthor = $db->prepare("SELECT name from acc where idacc = ?");
-                        $stmtAuthor->bind_param("s", $lecture['idacc']);
-                        $stmtAuthor->execute();
-                        $resultAuthor = $stmtAuthor->get_result();
-
-                        if ($resultAuthor->num_rows > 0) {
-                          $authorname = $resultAuthor->fetch_assoc();
-                          echo " By " . $authorname['name'];  
-                        } else {
-                          echo "By Someone"; 
-                        }
-                        
-
-                      echo "</small>";
-                      echo "<hr>";
+                    if ($resultAuthor->num_rows > 0) {
+                      $authorname = $resultAuthor->fetch_assoc();
+                      echo "By " . $authorname['name'];  
+                    } else {
+                      echo "By Someone"; 
+                    }
+                    echo "</small>";
+                    echo "<hr>";
                     echo "</div>";
                 echo "</div>";
-            }
+              }
           } else {
             echo "<p>No lecture found.</p>";
           }

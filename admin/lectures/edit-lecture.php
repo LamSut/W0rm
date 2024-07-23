@@ -111,7 +111,6 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
     </div>
 
   <script src="../../javascript.js"></script>
-  <?php echo $_SESSION['id_lectures'] ?>
 </body>
 
 </html>

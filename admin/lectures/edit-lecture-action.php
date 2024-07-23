@@ -1,6 +1,5 @@
 <?php
     require_once "../../login/config.php";
-    require_once "./lecture-functions.php";
     session_start();
 
     $id_lectures = $_SESSION['id_lectures'];

@@ -52,3 +52,19 @@ function edit_delete() {
 
 
 }
+
+function toggleContent() {
+  var more = document.getElementById("more");
+  var btnReadMore = document.getElementById("btn-read-more");
+  var dots =document.getElementById("dots");
+
+  if(dots.style.display === "none") {
+    dots.style.display = "inline";
+    btnReadMore.innerHTML = "Read more";
+    more.style.display = "none";
+  } else {
+    dots.style.display = "none";
+    btnReadMore.innerHTML = "Read less";
+    more.style.display = "inline";
+  }
+}
