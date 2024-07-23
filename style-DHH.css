@@ -2,6 +2,24 @@
 /* DHH */
 /* DHH */
 /*footer*/
+
+/*set up color and font*/
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=K2D:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+:root{
+   --main-color:#006e65;
+   --white:#0b2239;
+   --ctu-blue: #0d39d8;
+   --neon-green: #8ded20;
+   --neon-yellow: #c9f40b;
+   --sec-color: #46cf0f;
+   --red:#e74c3c;
+   --white:#fff;
+   --black:#222;
+   --light-color:#c7c3c3;
+   --main-bg-color:#dfdfdf;
+}
+
 .footer{
     margin: 100px 0px 20px 100px;
   }
@@ -140,7 +158,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 1px solid var(--light-color);
     border-radius: 7px;
     padding: 15px;
     transition: all 0.4s ease;
@@ -159,7 +176,6 @@
     overflow: hidden; 
     border-radius: 10%;
     margin-bottom: 5px;
-    box-shadow: 2px 2px 4px var(--light-color);
   }
   
   .feature-box .box-container .box h3{
@@ -189,9 +205,6 @@
     text-align: center;
     margin: 10px;
     font-weight: 800;
-    background: linear-gradient(180deg, var(--main-color) 25% ,var(--dark-blue));
-    background-clip: text;
-    color: transparent;
   }
   
   .info .box-container{
@@ -212,10 +225,9 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: 200px;
+    height: 300px;
     align-items: center;
     border-radius: 10px;
-    border: 1px solid var(--light-color);
     padding: 10px;
     transition: all 0.4s ease;
   }
@@ -227,15 +239,13 @@
   .info .box-container .box .minibox img{ 
     height: 150px;
     align-items: center;
-    /* filter: grayscale(100%); */
-    margin: 15px;
+    margin: 5px;
     padding: 10px;
     transition: all 0.4s ease;
     cursor: pointer;
   }
   .info .box-container .box .minibox img:hover{ 
     transform: scale(1.1);
-    /* filter: grayscale(0%); */
   }
   
   .info .box-container .box .minibox span{
@@ -274,7 +284,6 @@
     justify-content: center;
     align-items: center;
     height: 300px;
-    border: 1px solid var(--light-color);
     border-radius: 10px;
     padding: 10px;
     transition: all 0.4s ease-out;
@@ -315,6 +324,59 @@
     transform: scale(1.025);
     box-shadow: 2px 2px 4px var(--main-color);
   }
+   
+  /*page-content*/
+    
+  .page-content{
+    margin: 10px;
+    padding: 30px;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .page-content h1{
+    text-transform: uppercase;
+    font-size: 30px;
+    font-weight: 800;
+    color: var(--main-color);
+  }
+
+  .page-content .box-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px; margin: auto;
+    padding: 10px 10px;
+    font-size: 20px;
+  }
+
+  .page-content .box-container .box{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 500px);
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 10px 5px;
+    margin: 10px 5px;
+  }
+
+  .page-content .box-container .box img{
+    width: 450px;
+    border-radius: 10px;
+  }
+
+  .page-content .box-container .box p{
+    text-align: left;
+    text-align: justify;
+    font-size: 18px;
+  }
+
+  .page-content .box-container .box p span{
+    font-weight: 700;
+    font-size: 23px;
+    color: var(--main-color);
+  }
+
   /* end DHH */
   /* end DHH */
   /* end DHH */

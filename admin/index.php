@@ -31,6 +31,7 @@ $styleDHH = "style-DHH.css";
 $logo = "Logo.png";
 $home = "Home.png";
 $settingBTN = "settings-icon.png";
+$img_style = "light";
 
 if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
   $style = "style-dark.css";
@@ -38,6 +39,7 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
   $logo = "Dark-Logo.png";
   $home = "Dark-Home.png";
   $settingBTN = "Dark-settings-icon.png";
+  $img_style = "dark";
 }
 ?> 
 
@@ -91,7 +93,7 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
     </div>
   </div>
 
-  <div id="welcome-container" style="margin: 200px auto 60px auto; width:80%">
+  <div id="welcome-container" style="margin: 200px auto 80px auto; width:80%">
       <img style="float:left; height:225px" src="../img/<?php echo $home; ?>">
       <div>
         <h1 style="margin-top: 20px; margin-bottom: 8px;">Welcome to W0rm!</h1>
@@ -123,27 +125,72 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
       <h2>Main Feature</h2>
       <div class="box-container">
             <div class="box">
-               <img src="../img/gif/graduate.gif">
+               <img src="../img/gif/<?=$img_style?>/graduate.gif">
                <h3>Learning</h3>
                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.</p>
             </div>
             <div class="box">
-               <img src="../img/gif/online-learning.gif">
+               <img src="../img/gif/<?=$img_style?>/online-learning.gif">
                <h3>Practicing</h3>
                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.</p>
             </div>
             <div class="box">
-               <img src="../img/gif/podium.gif">
+               <img src="../img/gif/<?=$img_style?>/podium.gif">
                <h3>Competing</h3>
                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.</p>
             </div>
             <div class="box">
-               <img src="../img/gif/presentation.gif">
+               <img src="../img/gif/<?=$img_style?>/presentation.gif">
                <h3>Developing</h3>
                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.</p>
             </div>
       </div>
       </section>
+      
+      <section class="page-content">
+         <h2>WORM - Training with Cyberspace</h2>
+         <div class="box-container">
+            <div class="box">
+               <img src="../img/capture-the-flag.webp" alt="hinh1">
+            </div>
+            <div class="box">
+               <p>
+               Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+               sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+               Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+               </p>
+            </div>
+      </section>
+      
+      <section class="page-content">
+         <div class="box-container">
+            <div class="box">
+               <p>
+               Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+               sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+               Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+            </div>            
+            <div class="box">
+               <img src="../img/cybersecurity.jpg" alt="hinh2">
+            </div>
+          </div>
+      </section>
+
+      <section class="page-content">
+         <div class="box-container">
+            <div class="box">
+               <img src="../img/security.png" alt="hinh 3">
+            </div>
+            <div class="box">
+               <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+               </p>
+          </div>
+      </section>
+
       <section class="about">
             <div class="member">
                 <h2> Our Members </h2>
@@ -205,16 +252,18 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
                 </div>
             </div>
         </section>
+        
+
    <section class="info">
     <h2>Our Sponsor and Advisor</h2>
       <div class="box-container">
          <div class="box">
                <div class="minibox">
-                  <a href="https://www.ctu.edu.vn/"><img src="../img/Logo_Dai_hoc_Can_Tho.svg.png" alt="ctu logo"></a>
+                  <a href="https://www.ctu.edu.vn/"><img src="../img/<?=$img_style?>/Logo_Dai_hoc_Can_Tho.svg.png" alt="ctu logo"></a>
                   <span>Can Tho University</span>
                </div>
                <div class="minibox">
-                  <a href="https://cit.ctu.edu.vn/"><img src="../img/logo_CICT.png" alt="cict logo"></a> 
+                  <a href="https://cit.ctu.edu.vn/"><img src="../img/<?=$img_style?>/logo_CICT.png" alt="cict logo"></a> 
                   <span>College of Information and Communication Technology</span>
                </div>
          </div>
