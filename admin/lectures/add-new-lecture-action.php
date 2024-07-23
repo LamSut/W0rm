@@ -6,8 +6,6 @@ $title_lecture = $_POST['title_lecture'];
 $description_lecture = $_POST['description_lecture'];
 $idacc = $_SESSION['idacc'];
 
-echo $idacc;
-
 $lecture = new Lecture($title_lecture, $description_lecture, $idacc);
 
 if ($lecture->insertLecture()) {
