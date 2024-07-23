@@ -125,7 +125,7 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
      ?>
 
     <!-- Add news box -->
-    <div id="addBox" class="box-add" style="margin-bottom: 60px; margin-top: 100px">
+    <div id="addBox" class="box-add" style="margin-bottom: 60px; margin-top: 20px">
       <img src="data:image/png;base64,<?php echo $avatar; ?>" style="border-radius: 50%; height: 50px; width: 50px">
       <button id="addNewsBtn" class="button" onclick=submitForm()>Add news</button>
     </div>
