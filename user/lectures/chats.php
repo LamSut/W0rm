@@ -11,7 +11,6 @@ if (!isset($_SESSION['idacc'])){
     $stmt->execute();
     $result = $stmt->get_result();
     $row = $result->fetch_assoc();
-    $avatar = base64_encode($row['avatar']);
     $_SESSION['name']= $row['name'];
     $_SESSION['admin']= $row['admin'];
     $_SESSION['darkmode']= $row['darkmode'];
@@ -39,13 +38,11 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
   $logo = "Dark-Logo.png";
   $settingBTN = "Dark-settings-icon.png";
 }
-  $username = $_COOKIE["idacc"];
-  $_SESSION['idacc'] = $username;
 
   $id_lectures = $_GET['id_lectures'];
 
   $stmt = $db->prepare("SELECT * from acc where idacc = ?");
-  $stmt->bind_param("s", $username);
+  $stmt->bind_param("s", $_SESSION['idacc']);
   $stmt->execute();
 
   $result = $stmt->get_result();
@@ -137,15 +134,15 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
       $stmtXXX -> execute();
       $resultXXX = $stmtXXX -> get_result();
 
-      $current_idacc = $_COOKIE['idacc'];
+      $current_idacc = $_SESSION['idacc'];
       if($resultXXX->num_rows > 0){
         while($row = $resultXXX->fetch_assoc()){
-          $avatar = base64_encode($row['avatar']);
+          $avatar1 = base64_encode($row['avatar']);
           if ($current_idacc == $row['idacc']){
             echo <<< data
               <div id="boxchat">
                 <div class="author">
-                  <img src="data:image/png;base64,$avatar" style="border-radius: 50%; height: 50px; width: 50px">
+                  <img src="data:image/png;base64,$avatar1" style="border-radius: 50%; height: 50px; width: 50px">
                   <p style="margin: 5px 10px 0px 15px">
                     <b style="font-size: 22px">$row[name]</b>
                   <br>
@@ -165,7 +162,7 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
             echo <<< data
               <div id="boxchat">
                 <div class="author">
-                  <img src="data:image/png;base64,$avatar" style="border-radius: 50%; height: 50px; width: 50px">
+                  <img src="data:image/png;base64,$avatar1" style="border-radius: 50%; height: 50px; width: 50px">
                   <p style="margin: 5px 10px 0px 15px">
                     <b style="font-size: 22px">$row[name]</b>
                   <br>
@@ -234,7 +231,7 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
       if(isset($_GET['id_lectures'])) {
         if (isset($_POST['sendForm']) && !empty($_POST['textChats'])) {
           $textChats = $_POST['textChats']; 
-          $idacc = $_COOKIE['idacc'];
+          $idacc = $_SESSION['idacc'];
           date_default_timezone_set("Asia/Ho_Chi_Minh");
           $id_lectures = $_GET['id_lectures'];
           $stmt = $db -> prepare ("INSERT INTO chats (idacc, textChats, timeSend, id_lectures_chats) VALUES (?, ?, sysdate(), ?)");
