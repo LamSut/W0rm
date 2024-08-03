@@ -116,75 +116,90 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
      $id_lectures = $_GET['id_lectures'];
      $_SESSION['id_lectures'] = $id_lectures;
      echo <<< data
-        <div style="margin-left: 40%">
-            <a href="./news.php?id_lectures=$id_lectures" id="add-btn" style="background-color: #aaaaaa; color: #eaeaea">News</a>
-            <a href="" id="add-btn">Chats</a>
+        <div id="navTab" style="height: 40px; border-radius: 8px">
+            <a href="./news.php?id_lectures=$id_lectures" id="add-btn" class="non-active">News</a>
+            <a href="" id="add-btn" style="box-shadow: none; border: 0; border-radius: 8px; margin: 0px">Chats</a>
         </div>
       data;
      ?>
    
-  <!-- print message -->
-  <?php
-      $stmtXXX = $db -> prepare("SELECT ch.*, a.avatar, a.name
-        FROM chats ch
-        INNER JOIN acc a ON ch.idacc = a.idacc
-        WHERE ch.id_lectures_chats = ?
-        ORDER BY ch.timeSend ASC");
-      $stmtXXX -> bind_param("s", $id_lectures);
-      $stmtXXX -> execute();
-      $resultXXX = $stmtXXX -> get_result();
+   <div id="scrollChat">
+    <!-- print message -->
+      <?php
+        $stmtXXX = $db -> prepare("SELECT ch.*, a.avatar, a.name
+          FROM chats ch
+          INNER JOIN acc a ON ch.idacc = a.idacc
+          WHERE ch.id_lectures_chats = ?
+          ORDER BY ch.timeSend ASC");
+        $stmtXXX -> bind_param("s", $id_lectures);
+        $stmtXXX -> execute();
+        $resultXXX = $stmtXXX -> get_result();
 
-      $current_idacc = $_SESSION['idacc'];
-      if($resultXXX->num_rows > 0){
-        while($row = $resultXXX->fetch_assoc()){
-          $avatar1 = base64_encode($row['avatar']);
-          if ($current_idacc == $row['idacc']){
-            echo <<< data
-              <div id="boxchat">
-                <div class="author">
-                  <img src="data:image/png;base64,$avatar1" style="border-radius: 50%; height: 50px; width: 50px">
-                  <p style="margin: 5px 10px 0px 15px">
-                    <b style="font-size: 22px">$row[name]</b>
-                  <br>
-                    <i style="font-size: 15px">$row[timeSend]</i>
-                  </p>
-                  <a href='./delete-chat-action.php?del=$row[idchats]' id="removeBtn" data-title="Delete message">
-                      X
-                  </a>
+        $current_idacc = $_SESSION['idacc'];
+        if($resultXXX->num_rows > 0){
+          while($row = $resultXXX->fetch_assoc()){
+            $avatar1 = base64_encode($row['avatar']);
+            if ($current_idacc == $row['idacc']){
+              echo <<< data
+                <div id="boxchat">
+                  <div class="author">
+                    <img src="data:image/png;base64,$avatar1" style="border-radius: 50%; height: 50px; width: 50px">
+                    <p style="margin: 5px 10px 0px 15px">
+                      <b style="font-size: 22px">$row[name]</b>
+                    <br>
+                      <i style="font-size: 15px">$row[timeSend]</i>
+                    </p>
+                    <a href='./delete-chat-action.php?del=$row[idchats]' id="removeBtn" data-title="Delete message">
+                        X
+                    </a>
+                  </div>
+                  <div class="message" style="font-size: 18px; margin-left:4px">
+                    $row[textChats]
+                  </div>
                 </div>
-                <div class="message" style="font-size: 18px; margin-left:4px">
-                  $row[textChats]
+              data;
+            }
+            else {
+              echo <<< data
+                <div id="boxchat">
+                  <div class="author">
+                    <img src="data:image/png;base64,$avatar1" style="border-radius: 50%; height: 50px; width: 50px">
+                    <p style="margin: 5px 10px 0px 15px">
+                      <b style="font-size: 22px">$row[name]</b>
+                    <br>
+                      <i style="font-size: 15px">$row[timeSend]</i>
+                    </p>
+                  </div>
+                  <div class="message" style="font-size: 18px; margin-left:4px">
+                    $row[textChats]
+                  </div>
                 </div>
-              </div>
-            data;
-          }
-          else {
-            echo <<< data
-              <div id="boxchat">
-                <div class="author">
-                  <img src="data:image/png;base64,$avatar1" style="border-radius: 50%; height: 50px; width: 50px">
-                  <p style="margin: 5px 10px 0px 15px">
-                    <b style="font-size: 22px">$row[name]</b>
-                  <br>
-                    <i style="font-size: 15px">$row[timeSend]</i>
-                  </p>
-                </div>
-                <div class="message" style="font-size: 18px; margin-left:4px">
-                  $row[textChats]
-                </div>
-              </div>
-            data;
+              data;
+            }
           }
         }
-      }
-    ?>
+      ?>
+   </div>
     <!-- Add news box -->
-    <div id="addBox" class="box-add" style="margin-bottom: 60px; margin-top: 20px; position: -webkit-sticky; position: sticky; bottom: 10px">
+    <div id="addBox" class="box-add" style="margin-bottom: 60px; margin-top: 20px;">
       <img src="data:image/png;base64,<?php echo $avatar; ?>" style="border-radius: 50%; height: 50px; width: 50px">
       <button id="addNewsBtn" class="button" onclick=submitForm()>Send message</button>
     </div>
   </div>
-  
+  <script>
+    function scrollToBottom() {
+      const chatContainer = document.getElementById('scrollChat');
+      chatContainer.scrollTop = chatContainer.scrollHeight;
+    }
+
+    // Call this function once the DOM has fully loaded
+    document.addEventListener('DOMContentLoaded', scrollToBottom);
+
+    // Optionally, you might want to call this function whenever new messages are added
+    function onNewMessage() {
+      scrollToBottom();
+    }
+  </script>
   <script src="../../javascript.js"></script>
   <script>
     function submitForm() {
