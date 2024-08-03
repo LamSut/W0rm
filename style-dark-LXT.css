@@ -1,7 +1,7 @@
 /* LXT */
 /* LXT */
 /* LXT */
-/* update 22/07/2024 */
+/* update 03/08/2024 */
 #boxchat {
     border: 2px;
     border-radius: 10px;
@@ -73,7 +73,6 @@
     position: absolute;
     z-index: -1;
   }
-  
   button#addNewsBtn {
     color:#c2c0ca;
     border: none;
@@ -160,6 +159,25 @@
     padding: 8px;
     width: 97%;
     font-size: 18px;
+  }
+
+  #scrollChat {
+    height: 440px;
+    overflow: scroll;
+    overflow-x: hidden;
+    flex-direction: column-reverse;
+  }
+
+  #navTab {
+    background-color: #111111;
+  }
+  
+  #navTab a#add-btn.non-active {
+    background-color: #111111; 
+    color: #eeeeee; 
+    border-radius: 8px; 
+    box-shadow: none; 
+    margin: 0px
   }
   /* end LXT */
   /* end LXT */
