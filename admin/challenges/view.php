@@ -137,11 +137,11 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
           $prevPage = $currentPage - 1;
           $prevUrl = "?search=$search&page=$prevPage";
           echo "<a href='?search=$search&page=1'>First</a>";
-          echo "<a href='$prevUrl'><</a>";
+          echo "<a href='$prevUrl'>◄</a>";
         }
         else{
           echo "<a href='?search=$search&page=1'>First</a>";
-          echo "<a href=''><</a>";
+          echo "<a href=''>◄</a>";
         }
       
         // Generate page number links
@@ -191,11 +191,11 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
         if ($currentPage < $totalPages) {
           $nextPage = $currentPage + 1;
           $nextUrl = "?search=$search&page=$nextPage"; 
-          echo "<a href='$nextUrl'>></a>";
+          echo "<a href='$nextUrl'>►</a>";
           echo "<a href='?search=$search&page=" . ($totalPages) . "'>Last</a>";
         }
         else{
-          echo "<a href=''>></a>";
+          echo "<a href=''>►</a>";
           echo "<a href='?search=$search&page=" . ($totalPages) . "'>Last</a>";
         }
         
