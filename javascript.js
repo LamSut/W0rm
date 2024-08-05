@@ -30,41 +30,23 @@ function usermenu() {
   document.addEventListener('click', hideOnClickOutside);
 }
 
-function edit_delete() {
-  var editdeleteContent = document.getElementById("edit-delete");
-  var btnEditDelete = document.getElementsById("btn-edit-delete");
-
-  if (editdeleteContent.style.display === "block") {
-    editdeleteContent.style.display = "none";
-  } else {
-    editdeleteContent.style.display = "block";
-  }
-
-  // remove previous listener if it exists (prevents stacking)
-  document.removeEventListener('click', hideOnClickOutside);
-  // hide on outside click
-  function hideOnClickOutside(event) {
-    if (!btnEditDelete.contains(event.target)) { // check if clicking outside usermenu
-      editdeleteContent.style.display = "none";
+document.addEventListener('DOMContentLoaded', (e) => { //
+  const lectureContent = document.querySelectorAll('.lecture-content') // gather all the lecture-content
+  lectureContent.forEach((lecture) => {
+  lecture.addEventListener('click', (e) => {
+    const current = e.target // this is at the button btn-read-more
+    const isBtnReadMore = current.className.includes('btn-read-more') //check btn if it's class is btn-read-more
+    if(!isBtnReadMore) {
+      return;
+    } else {
+      const currentText = current.parentNode.parentNode.querySelector('.more') //just assign parent node
+      currentText.classList.toggle('more-open')
+      currentText.nextSibling.children[0].textContent = currentText.nextSibling.children[0].textContent.includes('Read more') ? 'Read less' : 'Read more'
+      const dots = current.parentNode.parentNode.querySelector('.dots')
+      dots.classList.toggle('dots-hide')
     }
-  }
-  document.addEventListener('click', hideOnClickOutside);
-
-
-}
-
-function toggleContent() {
-  var more = document.getElementById("more");
-  var btnReadMore = document.getElementById("btn-read-more");
-  var dots =document.getElementById("dots");
-
-  if(dots.style.display === "none") {
-    dots.style.display = "inline";
-    btnReadMore.innerHTML = "Read more";
-    more.style.display = "none";
-  } else {
-    dots.style.display = "none";
-    btnReadMore.innerHTML = "Read less";
-    more.style.display = "inline";
-  }
-}
+  })
+  // console.log("select here")
+  document.getElementById("btn-read-more").onclick = null;
+} )
+})

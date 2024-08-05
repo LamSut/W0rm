@@ -77,18 +77,18 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
   </div>
 
   <div id="content">
-  <form action="add-new-lecture-action.php" method="post" id="edit-container" enctype='multipart/form-data'>
+  <form action="add-new-lecture-action.php" method="post" class="add-edit-group-container" enctype='multipart/form-data'>
         <div class="add-lecture">
             <h4>Add Lecture</h4>
             <div class="title-lecture-container">
-              <label>Title: </label> 
-              <input type="text" name="title_lecture" id="title_lecture" required>
+              <label class='edit-add-title'>Title: </label> 
+              <input type="text" name="title_lecture" id="title_lecture" class='input-edit-add-title' required>
             </div>
             <div class="description-lecture-container">
-              <label>Description: </label>
-              <textarea name="description_lecture" id="description_lecture" rows="10" required></textarea>
+              <label class='edit-add-des'>Description: </label>
+              <textarea name="description_lecture" id="description_lecture" class='input-edit-add-des' rows="10" required></textarea>
             </div>
-            <div>
+            <div class="button-cluster">
               <input type="submit" value="Create New Lecture" onclick="return confirm('Confirm to add new lecture?')">
               <button id="cancel-btn" type="button" onclick="location.href='./view.php'">Cancel</button>
             </div>

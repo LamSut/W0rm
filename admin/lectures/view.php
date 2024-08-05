@@ -127,7 +127,9 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
                     echo "</div>";
                     echo "<div class='des'>";
                     if(strlen($lecture['des']) > 250) {
-                      echo "<p>" . substr($lecture['des'], 0, 250) . "<span id='dots'>...</span>" . "<span id='more' style='display: none;'> ". substr($lecture['des'], 250) ."</span>" . "<span><button style='' id='btn-read-more' onclick= 'toggleContent()'>Read more</button></span>" . "</p>";
+                      echo "<div class='lecture-content'>";
+                      echo "<p class='text'>" . substr($lecture['des'], 0, 250) . "<span class='dots'>...</span>" . "<span id='more' class='more'>". substr($lecture['des'], 250) ."</span>" . "<span><button style='' id='btn-read-more' class='btn-read-more'>Read more</button></span>" . "</p>";
+                      echo "</div>";
                     } else {
                       echo "<p>" . $lecture['des'] . "</p>";
                     }
