@@ -86,23 +86,23 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
   </div>
 
   <div id="content">
-  <form action="edit-lecture-action.php" method="post" id="edit-container" enctype='multipart/form-data'>
+  <form action="edit-lecture-action.php" method="post" class="add-edit-group-container" enctype='multipart/form-data'>
         <div class="add-lecture">
-            <h4>Edit Lecture</h4>
+            <h4 style="margin-bottom: 5px;">Edit Lecture</h4>
             <div>
               <p>
-                Notice: You are editing "<?php echo $lecture['title'] ?>"
+                Notice: You are editing "<b><?php echo $lecture['title'] ?></b>"
               </p>
             </div>
             <div class="title-lecture-container">
-              <label for="">Title: </label> 
-              <input type="text" name="title_lecture" id="title_lecture" value="<?= $lecture['title'] ?>" required>
+              <label for="" class='edit-add-title'>Title: </label> 
+              <input type="text" name="title_lecture" id="title_lecture" class='input-edit-add-title' value="<?= $lecture['title'] ?>" required>
             </div>
             <div class="description-lecture-container">
-              <label for="">Description: </label>
-              <textarea name="description_lecture" id="description_lecture" rows="10" required><?= $lecture['des'] ?></textarea>
+              <label for="" class='edit-add-des'>Description: </label>
+              <textarea name="description_lecture" id="description_lecture" class='input-edit-add-des' rows="10" required><?= $lecture['des'] ?></textarea>
             </div>
-            <div>
+            <div class="button-cluster">
               <input type="submit" value="Edit Lecture" onclick="return confirm('Confirm to edit lecture?')">
               <button id="cancel-btn" type="button" onclick="location.href='./view.php'">Cancel</button>
             </div>
