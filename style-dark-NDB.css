@@ -58,6 +58,7 @@
     text-align: center;
     display:block;
     border-radius: 3px;
+    transition: all 500ms ease;
   }
 
   .icon-edit:hover {
@@ -104,12 +105,20 @@
 
   .edit-delete {
     float:right;
+    display: flex;
+    gap: 5px;
+  }
+
+  
+  .button-cluster {
+    margin-top: 20px;
   }
 
   /* BUTTON READ MORE, READ LESS */
 
   .btn-read-more {
     background: none;
+    color: white;
     font-weight: bold;
     border: none;
   }
@@ -117,7 +126,7 @@
   .btn-read-more:hover {
     background-color: none;
     cursor: pointer;
-    color: #078179;
+    color: #b3ff00;
     font-weight: bold;
     transition: var(--transition);
   }
@@ -172,7 +181,17 @@
     border-radius: 5px;
     resize: none;
   }
-  
+
+  .input-edit-add-title {
+    height:25px; 
+    width:250px; 
+    font-size: 1.4rem;
+  }
+
+  .input-edit-add-des {
+    font-size: 1.1rem;
+  }
+
   /* end NDB */
   /* end NDB */
   /* end NDB */

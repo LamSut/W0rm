@@ -60,6 +60,8 @@
     text-align: center;
     display:block;
     border-radius: 3px;
+    border-radius: 3px;
+    transition: all 500ms ease;
   }
 
   .icon-edit:hover {
@@ -133,12 +135,11 @@
 
   .more {
     display: none;
-    transition: var(--transition);
   }
 
   .more-open {
     display: inline;
-    transition: var(--transition);
+    /* transition: height 2s; */
   }
 
   .dots-hide {
