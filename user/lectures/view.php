@@ -126,7 +126,7 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
               while($lecture = $result -> fetch_assoc()) {
                 echo "<div id='link-lecture'>";
                   echo "<div class='head-lecture'>";
-                  echo "<a class='title-lecture' href='chats.php?id_lectures=" . $lecture['id_lectures'] . "'>" . $lecture['title'] . "</a>";
+                  echo "<a class='title-lecture' href='news.php?id_lectures=" . $lecture['id_lectures'] . "'>" . $lecture['title'] . "</a>";
                   echo "</div>";
                   echo "<div class='des'>";
                     if(strlen($lecture['des']) > 250) {

@@ -119,7 +119,7 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
                 echo "<div id='link-lecture'>";
 
                     echo "<div class='head-lecture'>";
-                    echo "<a class='title-lecture' href='chats.php?id_lectures=" . $lecture['id_lectures'] . "'>" . $lecture['title'] . "</a>";
+                    echo "<a class='title-lecture' href='news.php?id_lectures=" . $lecture['id_lectures'] . "'>" . $lecture['title'] . "</a>";
                     echo "<form action='' class='edit-delete' method='post' id='form-edit-delete'>";
                     echo "<a name='edit' class='icon-edit' href='edit-lecture.php?id_lectures=" .$lecture['id_lectures'] . "'><img class='edit-img' src='../../img/" . $editLectureBTN . "'></a>";
                     echo "<a onclick=\"return confirm('Do you really want to delete?')\" name='delete' class='icon-edit' href='delete-lecture-action.php?id_lectures=".$lecture['id_lectures'] . "'><img class='delete-img' src='../../img/" . $deleteLectureBTN . "'></a>";
