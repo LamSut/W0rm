@@ -9,23 +9,20 @@
   #boxchat {
     border: 2px;
     border-radius: 10px;
-    margin-top: 10px;
-    margin-right: 10px;
+    margin: 5px 10px 10px 5px;
     padding: 20px;
     box-shadow: 0px 2px 2px 0px #000000;
   }
   #news-content {
     display: inline;
-    border-right: 4px solid #cfcfcf;
     height: auto;
     padding: 10px;
-    margin-bottom: 125px;
     width: 60%;
   }
   #chat-content {
     display: inline;
-    padding: 20px;
-    margin-bottom: 125px;
+    border-left: 4px solid #cfcfcf;
+    padding: 10px;
     width: 40%;
   }
   
@@ -175,7 +172,8 @@
   }
 
   #scrollChat {
-    height: 360px;
+    height: 330px;
+    margin: 20px 0px 0px 0px;
     overflow: scroll;
     overflow-x: hidden;
     flex-direction: column-reverse;

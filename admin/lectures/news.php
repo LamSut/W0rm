@@ -110,7 +110,7 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
     <div id="news-content">
       <h4 style="margin-left: 40%; margin-top: 0px; margin-bottom: 0px">Newsfeed</h4>
       <!-- Add news box -->
-      <div id="addBox" class="box-add" style="margin-bottom: 60px; margin-top: 20px">
+      <div id="addBox" class="box-add" style="margin-bottom: 20px; margin-top: 20px">
         <img src="data:image/png;base64,<?php echo $avatar; ?>" style="border-radius: 50%; height: 50px; width: 50px">
         <button id="addNewsBtn_news" class="button" onclick=submitForm_news()>Add news</button>
       </div>
@@ -190,7 +190,7 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
         ?>
       </div>
         <!-- Add news box -->
-      <div id="addBox_chats" class="box-add" style="margin-bottom: 60px; margin-top: 20px;">
+      <div id="addBox_chats" class="box-add" style="margin-bottom: 0px; margin-top: 0px;">
           <img src="data:image/png;base64,<?php echo $avatar; ?>" style="border-radius: 50%; height: 50px; width: 50px">
           <button id="addNewsBtn_chats" class="button" onclick=submitForm_chats()>Send message</button>
       </div>

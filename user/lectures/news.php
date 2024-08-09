@@ -149,8 +149,8 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
     </div>
     <!-- Chat div -->
     <div id="chat-content">
+      <h4 style="margin-left: 40%; margin-top: 0px; margin-bottom: 0px">Boxchat</h4>
       <div id="scrollChat">
-        <h4 style="margin-left: 40%; margin-top: 0px; margin-bottom: 0px">Boxchat</h4>
         <!-- print message -->
         <?php
           $stmtXXX = $db -> prepare("SELECT ch.*, a.avatar, a.name
@@ -206,7 +206,7 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
         ?>
       </div>
       <!-- Add news box -->
-      <div id="addBox" class="box-add" style="margin-bottom: 60px; margin-top: 30px;">
+      <div id="addBox" class="box-add" style="margin-bottom: 0px; margin-top: 0px;">
         <img src="data:image/png;base64,<?php echo $avatar; ?>" style="border-radius: 50%; height: 50px; width: 50px">
         <button id="addNewsBtn_chats" class="button" onclick=submitForm_chats()>Send message</button>
       </div>
