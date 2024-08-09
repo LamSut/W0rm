@@ -1,7 +1,9 @@
 <?php
     require_once "../../login/config.php";
     session_start();
-
+    echo '<pre>';
+    print_r($_SESSION);
+    echo '</pre>';
     if(isset($_GET['del'])){
         $id_lectures = $_SESSION['id_lectures'];
         $idnews = $_GET['del'];
@@ -15,5 +17,4 @@
     } else {
         echo "Something went wrong...";
     }
-
 ?>

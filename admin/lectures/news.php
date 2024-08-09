@@ -39,6 +39,7 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
 }
 
   $id_lectures = $_GET['id_lectures'];
+  $_SESSION['id_lectures'] = $id_lectures;
 
   $stmt = $db->prepare("SELECT * from acc where idacc = ?");
   $stmt->bind_param("s", $_SESSION['idacc']);
@@ -87,10 +88,7 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
       <a href="../labs/view.php">Labs</a>
     </div>
   </div>
-  
-  <div id="news-content">
     <?php
-
       $stmtLecture = $db -> prepare ("SELECT title FROM lectures WHERE id_lectures = ?");
       $stmtLecture -> bind_param("s", $id_lectures);
       $stmtLecture -> execute(); // Execute the query and store the result
@@ -100,7 +98,7 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
       if ($resultLecture->num_rows > 0) {
         $row = $resultLecture->fetch_assoc(); // Fetch the first row as an associative array
         $title = $row['title']; // Extract the 'title' value from the row
-        echo "<h3> $title </h3>";
+        echo "<h3 style='margin-top: 180px; margin-bottom: 0px'> $title </h3>";
       } else {
         echo "<h3> No lecture found with id: $id_lectures <h3>"; // Handle no results case
       }
@@ -108,71 +106,115 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
       // Close the result set (optional, recommended practice)
       $resultLecture->close();
     ?>
+  <div id="content_block">
+    <div id="news-content">
+      <h4 style="margin-left: 40%; margin-top: 0px; margin-bottom: 0px">Newsfeed</h4>
+      <!-- Add news box -->
+      <div id="addBox" class="box-add" style="margin-bottom: 60px; margin-top: 20px">
+        <img src="data:image/png;base64,<?php echo $avatar; ?>" style="border-radius: 50%; height: 50px; width: 50px">
+        <button id="addNewsBtn_news" class="button" onclick=submitForm_news()>Add news</button>
+      </div>
+      <!-- print message -->
+      <?php
+        $stmtXXX = $db -> prepare("SELECT nf.*, a.avatar, a.name
+          FROM newsfeed nf
+          INNER JOIN acc a ON nf.idacc = a.idacc
+          WHERE nf.id_lectures = ?
+          ORDER BY nf.timeSend DESC");
+        $stmtXXX -> bind_param("s", $id_lectures);
+        $stmtXXX -> execute();
+        $resultXXX = $stmtXXX -> get_result();
 
-    <!-- 2 Tabs -->
-     <?php
-     $id_lectures = $_GET['id_lectures'];
-     $_SESSION['id_lectures'] = $id_lectures;
-     echo <<< data
-        <div id="navTab" style="height: 40px; border-radius: 8px">
-          <a href="" id="add-btn" style="box-shadow: none; border: 0; border-radius: 8px; margin: 0px">News</a>
-          <a href="./chats.php?id_lectures=$id_lectures" id="add-btn" class="non-active">Chats</a>
-        </div>
-      data;
-     ?>
-
-    <!-- Add news box -->
-    <div id="addBox" class="box-add" style="margin-bottom: 60px; margin-top: 20px">
-      <img src="data:image/png;base64,<?php echo $avatar; ?>" style="border-radius: 50%; height: 50px; width: 50px">
-      <button id="addNewsBtn" class="button" onclick=submitForm()>Add news</button>
-    </div>
-    
-    <!-- <div id="upFile" class="box-add" style="margin-bottom: 60px;">
-      <img src="../../img/upload-icon.webp" width="35px" style="border-radius: 50%;">
-      <button id="addNewsBtn" class="button">Upload files</button>
-    </div> -->
-   
-  <!-- print message -->
-  <?php
-      $stmtXXX = $db -> prepare("SELECT nf.*, a.avatar, a.name
-        FROM newsfeed nf
-        INNER JOIN acc a ON nf.idacc = a.idacc
-        WHERE nf.id_lectures = ?
-        ORDER BY nf.timeSend DESC");
-      $stmtXXX -> bind_param("s", $id_lectures);
-      $stmtXXX -> execute();
-      $resultXXX = $stmtXXX -> get_result();
-
-      if($resultXXX->num_rows > 0){
-        while($row = $resultXXX->fetch_assoc()){
-          $avatar1 = base64_encode($row['avatar']);
-          echo <<< data
-            <div id="boxchat">
-              <div class="author">
-                <img src="data:image/png;base64,$avatar1" style="border-radius: 50%; height: 50px; width: 50px">
-                <p style="margin: 5px 10px 0px 15px">
-                  <b style="font-size: 22px">$row[name]</b>
-                <br>
-                  <i style="font-size: 15px">$row[timeSend]</i>
-                </p>
-                <a href='./delete-news-action.php?del=$row[idnews]' id="removeBtn" data-title="Delete message">
-                    X
-                </a>
+        if($resultXXX->num_rows > 0){
+          while($row = $resultXXX->fetch_assoc()){
+            $avatar1 = base64_encode($row['avatar']);
+            echo <<< data
+              <div id="boxchat" style="margin-top: 20px">
+                <div class="author">
+                  <img src="data:image/png;base64,$avatar1" style="border-radius: 50%; height: 50px; width: 50px">
+                  <p style="margin: 5px 10px 0px 15px">
+                    <b style="font-size: 22px">$row[name]</b>
+                  <br>
+                    <i style="font-size: 15px">$row[timeSend]</i>
+                  </p>
+                  <a href='./delete-news-action.php?del=$row[idnews]' id="removeBtn" data-title="Delete news">
+                      X
+                  </a>
+                </div>
+                <div class="message" style="font-size: 18px; margin-left:4px">
+                  $row[textNews]
+                </div>
               </div>
-              <div class="message" style="font-size: 18px; margin-left:4px">
-                $row[textNews]
-              </div>
-            </div>
-          data;
+            data;
+          }
         }
+      ?>
+    </div>
+<!-- Chat -->
+    <div id="chat-content">
+      <h4 style="margin-left: 40%; margin-top: 0px; margin-bottom: -5px">Boxchat</h4>
+      <div id="scrollChat">
+        <!-- print message -->
+        <?php
+          $stmtXXX = $db -> prepare("SELECT ch.*, a.avatar, a.name
+            FROM chats ch
+            INNER JOIN acc a ON ch.idacc = a.idacc
+            WHERE ch.id_lectures_chats = ?
+            ORDER BY ch.timeSend ASC");
+          $stmtXXX -> bind_param("s", $id_lectures);
+          $stmtXXX -> execute();
+          $resultXXX = $stmtXXX -> get_result();
+
+          if($resultXXX->num_rows > 0){
+            while($row = $resultXXX->fetch_assoc()){
+              $avatar2 = base64_encode($row['avatar']);
+              echo <<< data
+                <div id="boxchat">
+                  <div class="author">
+                    <img src="data:image/png;base64,$avatar2" style="border-radius: 50%; height: 30px; width: 30px">
+                    <p style="margin: 5px 10px 0px 15px">
+                      <b style="font-size: 15px">$row[name]</b>
+                      <i style="font-size: 13px">$row[timeSend]</i>
+                    </p>
+                    <a href='./delete-chat-action.php?del=$row[idchats]' id="removeBtn" data-title="Delete message">
+                        X
+                    </a>
+                  </div>
+                  <div class="message" style="font-size: 16px; margin-left:4px">
+                    $row[textChats]
+                  </div>
+                </div>
+              data;
+            }
+          }
+        ?>
+      </div>
+        <!-- Add news box -->
+      <div id="addBox_chats" class="box-add" style="margin-bottom: 60px; margin-top: 20px;">
+          <img src="data:image/png;base64,<?php echo $avatar; ?>" style="border-radius: 50%; height: 50px; width: 50px">
+          <button id="addNewsBtn_chats" class="button" onclick=submitForm_chats()>Send message</button>
+      </div>
+    </div>
+    <script>
+      function scrollToBottom() {
+        const chatContainer = document.getElementById('scrollChat');
+        chatContainer.scrollTop = chatContainer.scrollHeight;
       }
-    ?>
+
+      // Call this function once the DOM has fully loaded
+      document.addEventListener('DOMContentLoaded', scrollToBottom);
+
+      // Optionally, you might want to call this function whenever new messages are added
+      function onNewMessage() {
+        scrollToBottom();
+      }
+    </script>
   </div>
   
   <script src="../../javascript.js"></script>
   <script>
-    function submitForm() {
-      const btnChange = document.getElementById('addNewsBtn');
+    function submitForm_news() {
+      const btnChange = document.getElementById('addNewsBtn_news');
       const replacement = document.createElement('form'); // Create form element to replace button
 
       replacement.setAttribute('id', 'addNewsForm'); // Set form ID
@@ -190,7 +232,44 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
 
       const submitEle = document.createElement('input');
       submitEle.setAttribute('id', 'submit-btn');
-      submitEle.setAttribute('name', 'sendForm');
+      submitEle.setAttribute('name', 'sendForm_news');
+      submitEle.setAttribute('type', 'submit');
+      submitEle.innerHTML = 'Submit';
+      submitEle.addEventListener('submit', event => {
+        event.preventDefault();
+        replacement.replaceWith(btnChange);
+      });
+      replacement.appendChild(submitEle);
+
+      const cancelEle = document.createElement('button');
+      cancelEle.setAttribute('id', 'cancel-btn');
+      cancelEle.setAttribute('type', 'button');
+      cancelEle.innerHTML = 'Cancel';
+      cancelEle.addEventListener('click', () => {
+        replacement.replaceWith(btnChange); // Replace form with button on cancel
+      });
+      replacement.appendChild(cancelEle);
+    }
+    function submitForm_chats() {
+      const btnChange = document.getElementById('addNewsBtn_chats');
+      const replacement = document.createElement('form'); // Create form element to replace button
+
+      replacement.setAttribute('id', 'addNewsForm'); // Set form ID
+      replacement.setAttribute('method', 'post');
+      replacement.setAttribute('class', 'form');
+      btnChange.replaceWith(replacement);
+
+      const textEle = document.createElement('textarea');
+      textEle.setAttribute('id', 'textChats');
+      textEle.setAttribute('name', 'textChats');
+      textEle.setAttribute('rows', '3');
+      textEle.setAttribute('cols', '120');
+      textEle.setAttribute('placeholder', 'Enter message');
+      replacement.appendChild(textEle);
+
+      const submitEle = document.createElement('input');
+      submitEle.setAttribute('id', 'submit-btn');
+      submitEle.setAttribute('name', 'sendForm_chats');
       submitEle.setAttribute('type', 'submit');
       submitEle.innerHTML = 'Submit';
       submitEle.addEventListener('submit', event => {
@@ -209,11 +288,10 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
       replacement.appendChild(cancelEle);
     }
     
-    
   </script>
     <?php
       if(isset($_GET['id_lectures'])) {
-        if (isset($_POST['sendForm']) && !empty($_POST['textNews'])) {
+        if (isset($_POST['sendForm_news']) && !empty($_POST['textNews'])) {
           $textNews = $_POST['textNews']; 
           $idacc = $_SESSION['idacc'];
           date_default_timezone_set("Asia/Ho_Chi_Minh");
@@ -221,16 +299,22 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
           $stmt = $db -> prepare ("INSERT INTO newsfeed (idacc, textNews, timeSend, id_lectures) VALUES (?, ?, sysdate(), ?)");
           $stmt -> bind_param("sss", $idacc, $textNews, $id_lectures);
           $stmt -> execute();
-          // header('Location: ./news.php' . '?id_lecturess=' . $id_lectures);
-
           echo '<script>window.location.href = "./news.php?id_lectures=' . $id_lectures .'";</script>'; // Redirect to page
-          // echo '<script>window.location.replace("http://localhost/w0rm/user/lectures/news.php?id_lecturess=' . $id_lectures . '")</script>';
-          // exit();
         }
-      } else {
+        if (isset($_POST['sendForm_chats']) && !empty($_POST['textChats'])) {
+          $textChats = $_POST['textChats']; 
+          $idacc = $_SESSION['idacc'];
+          date_default_timezone_set("Asia/Ho_Chi_Minh");
+          $id_lectures = $_GET['id_lectures'];
+          $stmt = $db -> prepare ("INSERT INTO chats (idacc, textChats, timeSend, id_lectures_chats) VALUES (?, ?, sysdate(), ?)");
+          $stmt -> bind_param("sss", $idacc, $textChats, $id_lectures);
+          $stmt -> execute();
+          echo '<script>window.location.href = "./news.php?id_lectures=' . $id_lectures .'";</script>'; // Redirect to page
+        }
+      }
+      else {
         echo "No lecture found";
       }
     ?>
-</body>
-
+  </body>
 </html>
