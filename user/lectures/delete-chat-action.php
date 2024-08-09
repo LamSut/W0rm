@@ -8,9 +8,9 @@
         $stmt = $db -> prepare ("DELETE FROM chats WHERE idchats = ?");
         $stmt -> bind_param("s", $idchats);
         if($stmt -> execute()) {
-            header('location: ./chats.php?id_lectures=' . $id_lectures);
+            header('location: ./news.php?id_lectures=' . $id_lectures);
         } else {
-            header('location: ./chats.php?id_lectures=' . $id_lectures);
+            header('location: ./news.php?id_lectures=' . $id_lectures);
         }
     } else {
         echo "Something went wrong...";
