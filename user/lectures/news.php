@@ -216,11 +216,7 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
         const chatContainer = document.getElementById('scrollChat');
         chatContainer.scrollTop = chatContainer.scrollHeight;
       }
-
-      // Call this function once the DOM has fully loaded
       document.addEventListener('DOMContentLoaded', scrollToBottom);
-
-      // Optionally, you might want to call this function whenever new messages are added
       function onNewMessage() {
         scrollToBottom();
       }

@@ -97,7 +97,7 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
         </div>
         <div>
             <label for="des"><b>Description:</b></label><br>
-            <textarea id="des" name="des" rows="5" cols="45" maxlength="160" required style="font-size: 1.1rem;"></textarea><br><br>
+            <textarea id="des" name="des" rows="5" cols="45" maxlength="160" required style="font-size: 1.1rem; resize: none"></textarea><br><br>
 
             <label for="file"><b>File:</b></label>
             <input type="file" id="file" name="file" style="margin-left:5px; font-size: 1.0rem; width:210px" required> 
