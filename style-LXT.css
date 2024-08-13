@@ -96,6 +96,7 @@
     transition: all 0.5s ease;
   }
   input#submit-btn, button#cancel-btn {
+    top: 10px;
     left: 15px;
   }
   a#removeBtn {
@@ -149,7 +150,6 @@
   form#addNewsForm {
     -webkit-box-align: center;
     align-items: center;
-    display: flex;
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
     flex-direction: row;
@@ -158,17 +158,19 @@
   #textNews {
     color:#000000;
     margin: 0px 20px 0px 15px;
-    width: 100%;
+    width: 96%;
     padding: 8px;
     font-size: 18px;
+    resize: none;
   }
 
   #textChats {
     color:#000000;
     margin: 0px 20px 0px 15px;
     padding: 8px;
-    width: 97%;
+    width: 94%;
     font-size: 18px;
+    resize: none;
   }
 
   #scrollChat {
