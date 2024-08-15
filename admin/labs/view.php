@@ -1,4 +1,7 @@
 <?php
+
+use OpenStack\Compute\v2\Models\Server;
+
 require_once "../../login/config.php";
 
 require '../../vendor/autoload.php';
@@ -18,14 +21,28 @@ $compute = $openstack->computeV2(['region' => 'RegionOne']);
 $server = $compute->getServer(['id' => '809a701b-552d-4aae-94eb-ab291d42ada5']);
 $server1 = $compute->getServer(['id' => '5a83b510-c759-44d9-acb7-8e54a0bb6306']);
 
-$server->retrieve();  // Ensure details are retrieved from the API
+$server->retrieve();
 if($server->status!='ACTIVE'){
   $server->start();
 }
 
-$server1->retrieve();  // Ensure details are retrieved from the API
+$server1->retrieve();
 if($server1->status!='ACTIVE'){
   $server1->start();
+}
+
+$active = false;
+while (!$active) {
+  sleep(1);
+  $server->retrieve();
+  $active = $server->status === 'ACTIVE';
+}
+
+$active1 = false;
+while (!$active1) {
+  sleep(1);
+  $server1->retrieve();
+  $active1 = $server->status === 'ACTIVE';
 }
 
 $console = $server->getVncConsole();
