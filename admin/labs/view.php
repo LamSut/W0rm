@@ -1,10 +1,8 @@
 <?php
 
-use OpenStack\Compute\v2\Models\Server;
-
 require_once "../../login/config.php";
-
 require '../../vendor/autoload.php';
+require '../../config-openstack.php';
 
 $openstack = new OpenStack\OpenStack([
     'authUrl' => 'http://192.168.1.105/identity/v3',
