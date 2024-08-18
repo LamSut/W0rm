@@ -86,7 +86,7 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
   <div id="content">
 
     <!-- SEARCH -->
-    <div style="display: flex; justify-content: space-between;">
+    <div style="display: flex; justify-content: space-between; margin-bottom: 20px">
       <h2>Lectures</h2>
       <form action="" method="get" style="margin: 25px 25px 0px 0px;">
         <!-- <input id="add-btn" type="submit" value="New Lecture +">   -->

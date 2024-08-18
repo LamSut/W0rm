@@ -100,10 +100,10 @@ mysqli_close($db);
     <h3>Change your Avatar </h3>
     <img id="avatar" src="data:image/png;base64,<?php echo $avatar; ?>">
     <form action="uploadAvatar.php" method="post" enctype="multipart/form-data" style="margin-left: 40px;">
-        <input type="file" name="uploadAvatar" id="uploadAvatar" accept="image/*" style="margin: 20px 10px 0px 0px; font-size: 1.0rem; width:210px" required> 
-        <br><br>
-        <input type="submit" value="Upload" onclick="return confirm('Confirm to change your avatar?')">
-        <button id="cancel-btn" type="button" onclick="location.href='index.php'" style="margin-left: 20px;">Cancel</button>
+      <input type="file" name="uploadAvatar" id="uploadAvatar" accept="image/*" style="margin: 20px 10px 0px 0px; font-size: 1.0rem; width:210px" required> 
+      <br><br>
+      <input type="submit" value="Upload" onclick="return confirm('Confirm to change your avatar?')">
+      <button id="cancel-btn" type="button" onclick="location.href='index.php'" style="margin-left: 20px;">Cancel</button>
     </form>
   </div>
   

@@ -45,10 +45,10 @@ $updated = $challenge->updateChallenge($idctf);
 
 if ($updated) {
   ?>
-  <script>
-    alert("Challenge modified successfully!");
-    window.location = "./test.php?idctf=<?php echo isset($idctf) ? $idctf : ''; ?>";
-  </script>
+    <script>
+      alert("Challenge modified successfully!");
+      window.location = "./test.php?idctf=<?php echo isset($idctf) ? $idctf : ''; ?>";
+    </script>
   <?php
 } else {
   echo "Something went wrong...";

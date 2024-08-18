@@ -64,9 +64,6 @@ if (isset($_POST['currentPassword'])) {
 }
 
 ?> 
-
-
-
 <!DOCTYPE html>
 <html>
 

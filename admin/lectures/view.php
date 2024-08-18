@@ -83,96 +83,81 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
   </div>
   
   <div id="content">
-
     <!-- SEARCH -->
-    <div style="display: flex; justify-content: space-between;">
+    <div style="display: flex; justify-content: space-between; margin-bottom: 20px">
       <h2>Lectures</h2>
       <form action="" method="get" style="margin: 25px 25px 0px 0px;">
         <a href="add-new-lecture.php" id="add-btn">New Lecture <b>+</b></a>
         <!-- <input id="add-btn" type="submit" value="New Lecture +">   -->
-        <input type="text" name="search" id="search-input" placeholder="Search challenges...">
-        <input id="search-btn" type="submit" value="Search">  
+        <input type="text" name="search" id="search-input" placeholder="Search challenges..." style="margin-top: 8px">
+        <input id="search-btn" type="submit" value="Search" style="padding: 6px 12px 7px">  
       </form>
     </div>
 
-    <!-- LECTURES -->
-    
+    <!-- SHOW LECTURES -->
     <section class="lecture-container">
+      <div class="lectures">
+        <?php
+        $limit = 6;
+        $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+        $offset = ($currentPage - 1) * $limit;
+        
+        $search = isset($_GET['search']) ? $_GET['search'] : '';  // Get search term from URL
 
-        <div class="lectures">
+        $stmt = $db->prepare("SELECT * FROM lectures WHERE title LIKE ? ORDER BY id_lectures DESC LIMIT ?, ?");
+        $search_term = "%$search%"; // Add wildcards for partial matches
+        $stmt->bind_param("sss", $search_term, $offset, $limit);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        
+        if ($result->num_rows > 0) {
+          while($lecture = $result -> fetch_assoc()) {
+            echo "<div id='link-lecture'>";
+            echo "<div class='head-lecture'>";
+            echo "<a class='title-lecture' href='news.php?id_lectures=" . $lecture['id_lectures'] . "'>" . $lecture['title'] . "</a>";
+            echo "<form action='' class='edit-delete' method='post' id='form-edit-delete'>";
+            echo "<a name='edit' class='icon-edit' href='edit-lecture.php?id_lectures=" .$lecture['id_lectures'] . "'><img class='edit-img' src='../../img/" . $editLectureBTN . "'></a>";
+            echo "<a onclick=\"return confirm('Do you really want to delete?')\" name='delete' class='icon-edit' href='delete-lecture-action.php?id_lectures=".$lecture['id_lectures'] . "'><img class='delete-img' src='../../img/" . $deleteLectureBTN . "'></a>";
+            echo "</form>";
+            echo "</div>";
+            echo "<div class='des'>";
+            if(strlen($lecture['des']) > 250) {
+              echo "<div class='lecture-content'>";
+              echo "<p class='text'>" . substr($lecture['des'], 0, 250) . "<span class='dots'>...</span>" . "<span id='more' class='more'>". substr($lecture['des'], 250) ."</span>" . "<span><button style='' id='btn-read-more' class='btn-read-more'>Read more</button></span>" . "</p>";
+              echo "</div>";
+            } else {
+              echo "<p>" . $lecture['des'] . "</p>";
+            }
+            echo "</div>";
+            echo "<div>";
+            echo "<small class='date-time'>";
+            echo $lecture['time'];
+            echo "</small>";
+            echo "<small id='author' class='author'>";
+            $stmtAuthor = $db->prepare("SELECT name from acc where idacc = ?");
+            $stmtAuthor->bind_param("s", $lecture['idacc']);
+            $stmtAuthor->execute();
+            $resultAuthor = $stmtAuthor->get_result();
 
-          <?php
-          $limit = 6;
-          $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-          $offset = ($currentPage - 1) * $limit;
-          
-          $search = isset($_GET['search']) ? $_GET['search'] : '';  // Get search term from URL
-
-          $stmt = $db->prepare("SELECT * FROM lectures WHERE title LIKE ? ORDER BY id_lectures DESC LIMIT ?, ?");
-          $search_term = "%$search%"; // Add wildcards for partial matches
-          $stmt->bind_param("sss", $search_term, $offset, $limit);
-          $stmt->execute();
-          $result = $stmt->get_result();
-          
-          if ($result->num_rows > 0) {
-              while($lecture = $result -> fetch_assoc()) {
-                echo "<div id='link-lecture'>";
-
-                    echo "<div class='head-lecture'>";
-                    echo "<a class='title-lecture' href='news.php?id_lectures=" . $lecture['id_lectures'] . "'>" . $lecture['title'] . "</a>";
-                    echo "<form action='' class='edit-delete' method='post' id='form-edit-delete'>";
-                    echo "<a name='edit' class='icon-edit' href='edit-lecture.php?id_lectures=" .$lecture['id_lectures'] . "'><img class='edit-img' src='../../img/" . $editLectureBTN . "'></a>";
-                    echo "<a onclick=\"return confirm('Do you really want to delete?')\" name='delete' class='icon-edit' href='delete-lecture-action.php?id_lectures=".$lecture['id_lectures'] . "'><img class='delete-img' src='../../img/" . $deleteLectureBTN . "'></a>";
-                    echo "</form>";
-                    echo "</div>";
-                    echo "<div class='des'>";
-                    if(strlen($lecture['des']) > 250) {
-                      echo "<div class='lecture-content'>";
-                      echo "<p class='text'>" . substr($lecture['des'], 0, 250) . "<span class='dots'>...</span>" . "<span id='more' class='more'>". substr($lecture['des'], 250) ."</span>" . "<span><button style='' id='btn-read-more' class='btn-read-more'>Read more</button></span>" . "</p>";
-                      echo "</div>";
-                    } else {
-                      echo "<p>" . $lecture['des'] . "</p>";
-                    }
-                    echo "</div>";
-                    echo "<div>";
-                    echo "<small class='date-time'>";
-                    echo $lecture['time'];
-                    echo "</small>";
-                    echo "<small id='author' class='author'>";
-                    $stmtAuthor = $db->prepare("SELECT name from acc where idacc = ?");
-                    $stmtAuthor->bind_param("s", $lecture['idacc']);
-                    $stmtAuthor->execute();
-                    $resultAuthor = $stmtAuthor->get_result();
-
-                    if ($resultAuthor->num_rows > 0) {
-                      $authorname = $resultAuthor->fetch_assoc();
-                      echo "By " . $authorname['name'];  
-                    } else {
-                      echo "By Someone"; 
-                    }
-                    echo "</small>";
-                    echo "<hr>";
-                    echo "</div>";
-                echo "</div>";
-              }
-          } else {
-            echo "<p>No lecture found.</p>";
+            if ($resultAuthor->num_rows > 0) {
+              $authorname = $resultAuthor->fetch_assoc();
+              echo "By " . $authorname['name'];  
+            } else {
+              echo "By Someone"; 
+            }
+            echo "</small>";
+            echo "<hr>";
+            echo "</div>";
+            echo "</div>";
           }
-          ?>
-
-        </div>
-
-      <!-- </form> -->
+        } else {
+          echo "<p>No lecture found.</p>";
+        }
+        ?>
+      </div>
     </section>
-    
-    <!-- <?php
-      // for ($page = 1; $page < $number_of_pages; $page++) {
-      //   echo "<a href='" . "'>" . "</a>"
-      // }
-    ?> -->
 
     <?php
-
       $stmt1 = $db->prepare("SELECT title, des FROM lectures WHERE title LIKE ?");
       $search_term1 = "%$search%"; // Add wildcards for partial matches
       $stmt1->bind_param("s", $search_term);
@@ -218,7 +203,6 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
             
           }
           else if ($currentPage == $totalPages) {
-            
             for ($i = $currentPage - 4; $i <= $totalPages; $i++) {
               $activeClass = ($i == $currentPage) ? "active" : "";
               $pageUrl = "?search=$search&page=$i";  
@@ -226,20 +210,18 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
             }
           }
           else if ($currentPage + 2 > $totalPages) {
-            
             for ($i = $currentPage - 3; $i <= $totalPages; $i++) {
               $activeClass = ($i == $currentPage) ? "active" : "";
               $pageUrl = "?search=$search&page=$i";  
               echo "<a class='$activeClass' href='$pageUrl'>$i</a>";
             }
-          } else {
-            
+          } 
+          else {  
             for ($i = $currentPage - 2; $i <= $currentPage + 2; $i++) {
               $activeClass = ($i == $currentPage) ? "active" : "";
               $pageUrl = "?search=$search&page=$i"; 
               echo "<a class='$activeClass' href='$pageUrl'>$i</a>";
             }
-            
           }
         }
       
@@ -254,15 +236,11 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
           echo "<a href=''>►</a>";
           echo "<a href='?search=$search&page=" . ($totalPages) . "'>Last</a>";
         }
-        
         echo "</div>";
       }
-
     ?>
   </div>
   
   <script src="../../javascript.js"></script>
-  
 </body>
-
 </html>
