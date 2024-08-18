@@ -52,7 +52,6 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
 
 <!DOCTYPE html>
 <html>
-
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="refresh">
@@ -62,7 +61,6 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
 </head>
 
 <body>
-
   <div id="header">
     <div id="top">
       <a href=""><img src="../../img/<?php echo $logo; ?>" alt="W0rm" style="height: 80px"></a>

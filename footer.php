@@ -1,8 +1,8 @@
 <?php
-$footer_logo = "CTF-Logo.png";
-if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
-  $footer_logo = "Dark-CTF-Logo.png";
-}
+    $footer_logo = "CTF-Logo.png";
+    if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
+        $footer_logo = "Dark-CTF-Logo.png";
+    }
 ?>
 
 <section class="footer">

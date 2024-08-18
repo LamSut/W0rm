@@ -105,9 +105,9 @@ if (isset($_POST['darkMode'])) {
       <p><span style="margin-right: 10px;">Change password:</span> <a class="edit" href="password-verify.php">Edit</a></p>
       <form id="darkModeForm" method="post" style="display: inline-block;">
         <input type="hidden" name="darkMode" value="<?php echo ($switchto == "Dark" ? 1 : 0); ?>"> 
-          <button type="submit" class="edit" style="font-size: 1.2rem; font-weight: bold; border: none; background-color: transparent; padding: 0; cursor: pointer">
-            Switch to <?php echo $switchto; ?> Mode <img src="../../img/<?php echo $switchpic; ?>" style="height: 25px;">
-          </button>
+        <button type="submit" class="edit" style="font-size: 1.2rem; font-weight: bold; border: none; background-color: transparent; padding: 0; cursor: pointer">
+          Switch to <?php echo $switchto; ?> Mode <img src="../../img/<?php echo $switchpic; ?>" style="height: 25px;">
+        </button>
       </form>
     </div>
   </div>

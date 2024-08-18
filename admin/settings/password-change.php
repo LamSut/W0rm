@@ -125,7 +125,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <h4>Change Password</h4>
     <form id="change-password-form" method="post" action="password-change.php">  
       <br>
-
       <label for="newPassword">Enter new password:</label>
       <input type="password" id="newPassword" name="newPassword" value="<?php echo $newPassword; ?>" required>
       <?php echo "<p class='error'>" . $newPasswordErr . "</p>"; ?>
