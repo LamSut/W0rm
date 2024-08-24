@@ -120,19 +120,20 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
       </div>
     </div>
 
-
-  <section class="feature-box">
+    
+    <section class="feature-box">
       <h2>Main Feature</h2>
       <div class="box-container">
             <div class="box">
                <img src="../img/gif/<?=$img_style?>/graduate.gif">
                <h3>Learning</h3>
-               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.</p>
+               <p>Gaining a lot of knowledge about Cyber Security through learning materials provided by CICT</p>
             </div>
             <div class="box">
                <img src="../img/gif/<?=$img_style?>/online-learning.gif">
                <h3>Practicing</h3>
-               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.</p>
+               <p>Get more experience in the field of Cyber Security through online labs and CTF challenges</p>
+
             </div>
             <div class="box">
                <img src="../img/gif/<?=$img_style?>/podium.gif">
@@ -151,28 +152,27 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
          <h2>WORM - Training with Cyberspace</h2>
          <div class="box-container">
             <div class="box">
-               <img src="../img/capture-the-flag.webp" alt="hinh1">
+               <img src="../img/<?=$img_style?>/ctf.png" alt="hinh1">
             </div>
             <div class="box">
-               <p>
-               Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-               sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-               Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-               </p>
+            <h3>What is CTF?</h3>
+                <p>
+                CTF (Capture The Flag) is a cybersecurity competition where players solve challenges ranging from simple programming to complex server hacking. 
+                The goal is to find specific text segments, or "flags," hidden in various digital locations.
+                </p>
             </div>
       </section>
       
       <section class="page-content">
          <div class="box-container">
             <div class="box">
-               <p>
-               Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-               sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-               Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                <h3>What is WOrm?</h3>
+                <p>
+                  WOrm is a cloud-based security testing practice environment project developed by a group of students from CIT.
                 </p>
             </div>            
             <div class="box">
-               <img src="../img/cybersecurity.jpg" alt="hinh2">
+               <img src="../img/<?=$img_style?>/worm_info.png" alt="hinh2">
             </div>
           </div>
       </section>
@@ -183,12 +183,40 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
                <img src="../img/security.png" alt="hinh 3">
             </div>
             <div class="box">
-               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-               </p>
+              <h3>Our Project's Goal</h3>
+                <p>
+                The goal of the project is to design and build for Can Tho University students an environment to practice security testing 
+                and knowledge in the field of Information Security, based on Cloud Computing technologies.
+                </p>
           </div>
+      </section>
+
+      <section class="note-box">
+      <h2>Urgency of the project</h2>
+      <div class="box-container">
+            <div class="box">
+               <img src="../img/<?=$img_style?>/training.png">
+               <h3>Necessity</h3>
+               <p>Cybersecurity workforce training is crucial, especially in the Mekong Delta. 
+                Can Tho University offers online learning platforms but lacks a security testing environment for students.
+              </p>
+            </div>
+            <div class="box">
+               <img src="../img/<?=$img_style?>/challenge.png">
+               <h3>Challenges</h3>
+               <p>Setting up a security testing practice environment is expensive and resource-intensive, 
+                hindering students, particularly those from disadvantaged backgrounds, due to limited access to suitable hardware.
+               </p>
+
+            </div>
+            <div class="box">
+               <img src="../img/<?=$img_style?>/app.png">
+               <h3>Application</h3>
+               <p>We aim to create a web-based platform providing hands-on security testing exercises for students. 
+                Our system will offer challenges with various targets (e.g., images, videos, servers) and supplementary learning materials.
+               </p>
+            </div>
+      </div>
       </section>
 
       <section class="about">

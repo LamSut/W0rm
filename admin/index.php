@@ -66,7 +66,7 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
 </head>
 
 <body>
-<!-- Navbar -->
+
   <div id="header">
     <div id="top">
       <a href=""><img src="../img/<?php echo $logo; ?>" alt="W0rm" style="height: 80px"></a>
@@ -92,178 +92,211 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
       <a href="./labs/view.php">Labs</a>
     </div>
   </div>
-<!-- Welcome title -->
+
   <div id="welcome-container" style="margin: 200px auto 80px auto; width:80%">
-    <img style="float:left; height:225px" src="../img/<?php echo $home; ?>">
-    <div>
-      <h1 style="margin-top: 20px; margin-bottom: 8px;">Welcome to W0rm!</h1>
-      <p style="margin-top:10px; margin-bottom: 20px; font-size:1.2rem;"><i>A cloud-based hacking practice environment</i></p>
-      <table>
-        <tr>
-          <td rowspan="4" style="vertical-align: top; text-align: left; padding: 0px">
-            <h4 style="margin-top: 0px;">Including: </h4>
-          </td>
-        <tr>
-          <td>
-            <li style="font-size: 1.2rem;"><b>Lectures</b> on Information Security. </li>
-          </td>
-        <tr>
-          <td>
-            <li style="font-size: 1.2rem;">Interesting <b>CTF Challenges</b>. </li>
-          </td>
-        <tr>
-          <td>
-            <li style="font-size: 1.2rem;">Exquisite <b>Labs</b> for attacking pratices.</li>
-          </td>
-        </tr>
-      </table>
+      <img style="float:left; height:225px" src="../img/<?php echo $home; ?>">
+      <div>
+        <h1 style="margin-top: 20px; margin-bottom: 8px;">Welcome to W0rm!</h1>
+        <p style="margin-top:10px; margin-bottom: 20px; font-size:1.2rem;"><i>A cloud-based hacking practice environment</i></p>
+        <table>
+          <tr>
+            <td rowspan="4" style="vertical-align: top; text-align: left; padding: 0px">
+              <h4 style="margin-top: 0px;">Including: </h4>
+            </td>
+          <tr>
+            <td>
+              <li style="font-size: 1.2rem;"><b>Lectures</b> on Information Security. </li>
+            </td>
+          <tr>
+              <td>
+              <li style="font-size: 1.2rem;">Interesting <b>CTF Challenges</b>. </li>
+              </td>
+          <tr>
+              <td>
+              <li style="font-size: 1.2rem;">Exquisite <b>Labs</b> for attacking pratices.</li>
+              </td>
+          </tr>
+        </table>
+      </div>
     </div>
-  </div>
-<!-- Main features -->
+
+
   <section class="feature-box">
-    <h2>Main Feature</h2>
-    <div class="box-container">
-      <div class="box">
-        <img src="../img/gif/<?=$img_style?>/graduate.gif">
-        <h3>Learning</h3>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.</p>
-      </div>
-      <div class="box">
-        <img src="../img/gif/<?=$img_style?>/online-learning.gif">
-        <h3>Practicing</h3>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.</p>
-      </div>
-      <div class="box">
-        <img src="../img/gif/<?=$img_style?>/podium.gif">
-        <h3>Competing</h3>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.</p>
-      </div>
-      <div class="box">
-        <img src="../img/gif/<?=$img_style?>/presentation.gif">
-        <h3>Developing</h3>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.</p>
-      </div>
-    </div>
-  </section>
-<!-- Content -->
-  <section class="page-content">
-    <h2>WORM - Training with Cyberspace</h2>
-    <div class="box-container">
-      <div class="box">
-        <img src="../img/capture-the-flag.webp" alt="hinh1">
-      </div>
-      <div class="box">
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-          sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-          Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </p>
-    </div>
-  </section>
-  
-  <section class="page-content">
-    <div class="box-container">
-      <div class="box">
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-          sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-          Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </p>
-      </div>            
-      <div class="box">
-        <img src="../img/cybersecurity.jpg" alt="hinh2">
-      </div>
-    </div>
-  </section>
+      <h2>Main Feature</h2>
+      <div class="box-container">
+            <div class="box">
+               <img src="../img/gif/<?=$img_style?>/graduate.gif">
+               <h3>Learning</h3>
+               <p>Gaining a lot of knowledge about Cyber Security through learning materials provided by CICT</p>
+            </div>
+            <div class="box">
+               <img src="../img/gif/<?=$img_style?>/online-learning.gif">
+               <h3>Practicing</h3>
+               <p>Get more experience in the field of Cyber Security through online labs and CTF challenges</p>
 
-  <section class="page-content">
-    <div class="box-container">
-      <div class="box">
-        <img src="../img/security.png" alt="hinh 3">
+            </div>
+            <div class="box">
+               <img src="../img/gif/<?=$img_style?>/podium.gif">
+               <h3>Competing</h3>
+               <p>Join the competition, overcome obstacles and gain the top-scorer on the leaderboard</p>
+            </div>
+            <div class="box">
+               <img src="../img/gif/<?=$img_style?>/presentation.gif">
+               <h3>Developing</h3>
+               <p>Develope your skill and knowledge through competitions</p>
+            </div>
       </div>
-      <div class="box">
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-          sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-          Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </p>
-    </div>
-  </section>
-<!-- Member -->
-  <section class="about">
-    <div class="member">
-      <h2> Our Members </h2>
-      <div class="member-container">
-        <div class="member-box">
-          <div class="member-img">
-            <a href="https://scholar.google.com.tw/citations?user=0V1HxNUAAAAJ&hl=en">
-              <img src="../img/member-img/thai_tuan.jpg" alt="cict TMTuan">
-            </a>
+      </section>
+      
+      <section class="page-content">
+         <h2>WORM - Training with Cyberspace</h2>
+         <div class="box-container">
+            <div class="box">
+               <img src="../img/<?=$img_style?>/ctf.png" alt="hinh1">
+            </div>
+            <div class="box">
+            <h3>What is CTF?</h3>
+                <p>
+                CTF (Capture The Flag) is a cybersecurity competition where players solve challenges ranging from simple programming to complex server hacking. 
+                The goal is to find specific text segments, or "flags," hidden in various digital locations.
+                </p>
+            </div>
+      </section>
+      
+      <section class="page-content">
+         <div class="box-container">
+            <div class="box">
+                <h3>What is WOrm?</h3>
+                <p>
+                  WOrm is a cloud-based security testing practice environment project developed by a group of students from CIT.
+                </p>
+            </div>            
+            <div class="box">
+               <img src="../img/<?=$img_style?>/worm_info.png" alt="hinh2">
+            </div>
           </div>
-          <div class="member-intro">
-            <span>Dr. Thai Minh Tuan</span>
-            <h3>Project Instructor</h3>
-          </div>
-        </div>
+      </section>
 
-        <div class="member-box">
-          <div class="member-img">
-            <img src="../img/member-img/LS.png" alt="member-img">
+      <section class="page-content">
+         <div class="box-container">
+            <div class="box">
+               <img src="../img/security.png" alt="hinh 3">
+            </div>
+            <div class="box">
+              <h3>Our Project's Goal</h3>
+                <p>
+                The goal of the project is to design and build for Can Tho University students an environment to practice security testing 
+                and knowledge in the field of Information Security, based on Cloud Computing technologies.
+                </p>
           </div>
-          <div class="member-intro">
-            <span>Truong Dang Truc Lam</span>
-            <h3>Leader of The Project</h3>
-          </div>
-        </div>
+      </section>
 
-        <div class="member-box">
-          <div class="member-img">
-            <img src="../img/member-img/XT.JPG" alt="member-img">
-          </div>
-          <div class="member-intro">
-            <span>Le Xuan Thanh</span>
-            <h3>Member of The Project</h3>
-          </div>
-        </div>
+      <section class="note-box">
+      <h2>Urgency of the project</h2>
+      <div class="box-container">
+            <div class="box">
+               <img src="../img/<?=$img_style?>/training.png">
+               <h3>Necessity</h3>
+               <p>Cybersecurity workforce training is crucial, especially in the Mekong Delta. 
+                Can Tho University offers online learning platforms but lacks a security testing environment for students.
+              </p>
+            </div>
+            <div class="box">
+               <img src="../img/<?=$img_style?>/challenge.png">
+               <h3>Challenges</h3>
+               <p>Setting up a security testing practice environment is expensive and resource-intensive, 
+                hindering students, particularly those from disadvantaged backgrounds, due to limited access to suitable hardware.
+               </p>
 
-        <div class="member-box">
-          <div class="member-img">
-            <img src="../img/member-img/BTT.jpg" alt="member-img">
-          </div>
-          <div class="member-intro">
-            <span>Dang Hoang Hung</span>
-            <h3>Member of The Project</h3>
-          </div>
-        </div>
-
-        <div class="member-box">
-          <div class="member-img">
-            <img src="../img/member-img/DB.JPG" alt="member-img">
-          </div>
-          <div class="member-intro">
-            <span>Nguyen Duy Bang</span>
-            <h3>Member of The Project</h3>
-          </div>
-        </div>
+            </div>
+            <div class="box">
+               <img src="../img/<?=$img_style?>/app.png">
+               <h3>Application</h3>
+               <p>We aim to create a web-based platform providing hands-on security testing exercises for students. 
+                Our system will offer challenges with various targets (e.g., images, videos, servers) and supplementary learning materials.
+               </p>
+            </div>
       </div>
-    </div>
-  </section>
+      </section>
+
+      <section class="about">
+            <div class="member">
+                <h2> Our Members </h2>
+                <div class="member-container">
+
+                    <div class="member-box">
+                        <div class="member-img">
+                            <a href="https://scholar.google.com.tw/citations?user=0V1HxNUAAAAJ&hl=en">
+                                <img src="../img/member-img/thai_tuan.jpg" alt="cict TMTuan">
+                            </a>
+                        </div>
+                        <div class="member-intro">
+                            <span>Dr. Thai Minh Tuan</span>
+                            <h3>Project Instructor</h3>
+                        </div>
+                    </div>
+
+
+                    <div class="member-box">
+                        <div class="member-img">
+                            <img src="../img/member-img/LS.png" alt="member-img">
+                        </div>
+                        <div class="member-intro">
+                            <span>Truong Dang Truc Lam</span>
+                            <h3>Leader of The Project</h3>
+                        </div>
+                    </div>
+
+                    <div class="member-box">
+                        <div class="member-img">
+                            <img src="../img/member-img/XT.JPG" alt="member-img">
+                        </div>
+                        <div class="member-intro">
+                            <span>Le Xuan Thanh</span>
+                            <h3>Member of The Project</h3>
+                        </div>
+                    </div>
+
+                    <div class="member-box">
+                        <div class="member-img">
+                            <img src="../img/member-img/BTT.jpg" alt="member-img">
+                        </div>
+                        <div class="member-intro">
+                            <span>Dang Hoang Hung</span>
+                            <h3>Member of The Project</h3>
+                        </div>
+                    </div>
+
+                    <div class="member-box">
+                        <div class="member-img">
+                            <img src="../img/member-img/DB.JPG" alt="member-img">
+                        </div>
+                        <div class="member-intro">
+                            <span>Nguyen Duy Bang</span>
+                            <h3>Member of The Project</h3>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
         
-  <section class="info">
+
+   <section class="info">
     <h2>Our Sponsor and Advisor</h2>
-    <div class="box-container">
-      <div class="box">
-        <div class="minibox">
-          <a href="https://www.ctu.edu.vn/"><img src="../img/<?=$img_style?>/Logo_Dai_hoc_Can_Tho.svg.png" alt="ctu logo"></a>
-          <span>Can Tho University</span>
-        </div>
-        <div class="minibox">
-          <a href="https://cit.ctu.edu.vn/"><img src="../img/<?=$img_style?>/logo_CICT.png" alt="cict logo"></a> 
-          <span>College of Information and Communication Technology</span>
-        </div>
+      <div class="box-container">
+         <div class="box">
+               <div class="minibox">
+                  <a href="https://www.ctu.edu.vn/"><img src="../img/<?=$img_style?>/Logo_Dai_hoc_Can_Tho.svg.png" alt="ctu logo"></a>
+                  <span>Can Tho University</span>
+               </div>
+               <div class="minibox">
+                  <a href="https://cit.ctu.edu.vn/"><img src="../img/<?=$img_style?>/logo_CICT.png" alt="cict logo"></a> 
+                  <span>College of Information and Communication Technology</span>
+               </div>
+         </div>
       </div>
-    </div>
-  </section> 
+   </section> 
   <script src="../javascript.js"></script>
   <?php include '../footer.php';?>
 </body>
