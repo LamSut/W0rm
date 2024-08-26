@@ -16,13 +16,13 @@
   #news-content {
     display: inline;
     height: auto;
-    padding: 10px;
+    padding: 0px;
     width: 60%;
   }
   #chat-content {
     display: inline;
     border-left: 4px solid #111111;
-    padding: 10px;
+    padding: 0px 0px 0px 5px;
     width: 40%;
   }
   

@@ -96,7 +96,7 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
       if ($resultLecture->num_rows > 0) {
         $row = $resultLecture->fetch_assoc(); // Fetch the first row as an associative array
         $title = $row['title']; // Extract the 'title' value from the row
-        echo "<h3 style='margin-top: 180px; margin-bottom: 0px'> $title </h3>";
+        echo "<h3 style='margin-top: 170px; margin-bottom: 0px'> $title </h3>";
       } else {
         echo "<h3> No lecture found with id: $id_lectures <h3>"; // Handle no results case
       }
@@ -257,7 +257,7 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
       const textEle = document.createElement('textarea');
       textEle.setAttribute('id', 'textChats');
       textEle.setAttribute('name', 'textChats');
-      textEle.setAttribute('rows', '3');
+      textEle.setAttribute('rows', '2');
       textEle.setAttribute('cols', '120');
       textEle.setAttribute('placeholder', 'Enter message');
       replacement.appendChild(textEle);
