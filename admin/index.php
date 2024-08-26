@@ -55,9 +55,6 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
       td, th {
          padding: 4px 0px 2px 10px;
       }
-      span {
-         font-size: 1.4rem;
-      }
       h2 {
         text-align: center;
         margin: 20px 0px 20px 0px;
