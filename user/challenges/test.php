@@ -133,9 +133,14 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
               echo "<span id='ctfAttempted' style='margin-left:10px'></span>";
               if (isset($_POST['key'])) {
                 if($_POST['key'] == $row['keyfile']){
-                  $userId = $_SESSION['idacc']; 
-                  $sql = "INSERT INTO ctfAttempt (idacc, idctf, time) VALUES ('$userId', '$idctf', sysdate())";
-                  $db->query($sql);
+                  $userId = $_SESSION['idacc'];
+
+                  $deleteSql = "DELETE FROM ctfAttempt WHERE idacc = '$userId' AND idctf = '$idctf'";
+                  $db->query($deleteSql);
+          
+                  $insertSql = "INSERT INTO ctfAttempt (idacc, idctf, time) VALUES ('$userId', '$idctf', sysdate())";
+                  $db->query($insertSql);
+          
                   echo "<span id='correct-key''>Correct!</span>";
                   echo "<script>document.getElementById('key-input').disabled = true;</script>";
                   echo "<script>document.getElementById('keySubmit').disabled = true;</script>";

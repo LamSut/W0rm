@@ -97,7 +97,6 @@ insert into ctf values(61,'mongki22','Reverse Engineering','This is just for tes
 
 -- drop table ctfAttempt
 create table ctfAttempt(
-	idctfAttempt int primary key auto_increment,
     idacc varchar(15),
     idctf int,
     time varchar(30),
@@ -105,7 +104,7 @@ create table ctfAttempt(
 	constraint fk_attempt_ctf foreign key (idctf) references ctf(idctf)
 );
 -- select * from ctfAttempt;
-insert into ctfAttempt values (1,'B2111933',1,sysdate());
+insert into ctfAttempt values ('B2111933',1,sysdate());
 
 create table cmt(
 	idcmt int primary key auto_increment,
