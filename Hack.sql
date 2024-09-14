@@ -160,13 +160,14 @@ insert into cmt(content,time,idacc) values('cow',sysdate(),'B3333333');
 insert into cmt(content,time,idacc) values('sfdfgdvcbhjxfvccvxzhvxbjhgasbdhajnvb xccb zxnc cxbbxcbncxkcnxjkxnccj á á á vjdkvhkkuchvukjhi',sysdate(),'B3333333');
 insert into cmt(content,time,idacc) values('mongki',sysdate(),'B2111933');
 
-drop table lectures;
+-- drop table lectures;
 create table lectures (
 	id_lectures int primary key auto_increment,
 	title VARCHAR(50)  NOT NULL,
     des text(500),
     time varchar(30),
-	idacc varchar(15) references acc(idacc)
+	idacc varchar(15) ,
+    constraint fk_author_lec foreign key (idacc) references acc(idacc)
 );
 
 insert into lectures (id_lectures, title, des, time, idacc) values (1, 'Bla Bla Bla', 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Labore ullam, minus mollitia quidem quos quo nam commodi ipsum optio et eos ad est delectus expedita repellat quisquam vel? Beatae, provident! Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, repellendus veritatis dolorum, enim esse excepturi quibusdam illo corporis deserunt cumque officiis molestias exercitationem, quis pariatur unde velit. Officiis, saepe ducimus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur rerum pariatur in excepturi ipsam voluptatibus molestias officiis saepe natus, nihil recusandae autem porro ullam. Et error quasi perspiciatis enim tempora.',sysdate(), 'B3333333');
@@ -176,23 +177,28 @@ insert into lectures (id_lectures, title, des, time, idacc) values (4, 'Hi Hi Hi
 insert into lectures (id_lectures, title, des, time, idacc) values (5, 'One Piece', 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Labore ullam, minus mollitia quidem quos quo nam commodi ipsum optio et eos ad est delectus expedita repellat quisquam vel? Beatae, provident! Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, repellendus veritatis dolorum, enim esse excepturi quibusdam illo corporis deserunt cumque officiis molestias exercitationem, quis pariatur unde velit. Officiis, saepe ducimus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur rerum pariatur in excepturi ipsam voluptatibus molestias officiis saepe natus, nihil recusandae autem porro ullam. Et error quasi perspiciatis enim tempora.',sysdate(), 'B3333333');
 
 
-drop table newsfeed;
+-- drop table newsfeed;
 create table newsfeed (
 	idnews int primary key auto_increment,
-	idacc varchar(15),
 	textNews varchar(300) not null,
     timeSend varchar(30),
-    id_lectures int not null, constraint fk_id_lectures foreign key (id_lectures) references lectures(id_lectures)
+    id_lectures int not null,
+    idacc varchar(15),
+    constraint fk_nf_lectures foreign key (id_lectures) references lectures(id_lectures),
+    constraint fk_nf_acc foreign key (idacc) references acc(idacc)
 );
 
 select * from newsfeed;
 delete from newsfeed where idnews = 3;
 
+-- drop table chats;
 create table chats (
 	idchats int primary key auto_increment,
 	idacc varchar(15),
 	textChats varchar(300) not null,
     timeSend varchar(30),
-    id_lectures_chats int not null, constraint id_lectures_chats foreign key (id_lectures_chats) references lectures(id_lectures)
+    id_lectures_chats int not null, 
+    constraint fk_lectures_chats foreign key (id_lectures_chats) references lectures(id_lectures),
+    constraint fk_lectures_acc foreign key (idacc) references acc(idacc)
 );
 select * from chats;

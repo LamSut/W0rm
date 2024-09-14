@@ -127,11 +127,11 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
 
       if($resultXXX->num_rows > 0){
         while($row = $resultXXX->fetch_assoc()){
-          $avatar = base64_encode($row['avatar']);
+          $avatar1 = base64_encode($row['avatar']);
           echo <<< data
             <div id="boxchat" style="margin-top: 20px">
               <div class="author">
-                <img src="data:image/png;base64,$avatar" style="border-radius: 50%; height: 50px; width: 50px">
+                <img src="data:image/png;base64,$avatar1" style="border-radius: 50%; height: 50px; width: 50px">
                 <p style="margin: 5px 10px 0px 15px">
                   <b style="font-size: 22px">$row[name]</b>
                 <br>
@@ -165,12 +165,12 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
           $current_idacc = $_SESSION['idacc'];
           if($resultXXX->num_rows > 0){
             while($row = $resultXXX->fetch_assoc()){
-              $avatar1 = base64_encode($row['avatar']);
+              $avatar2 = base64_encode($row['avatar']);
               if ($current_idacc == $row['idacc']){
                 echo <<< data
                   <div id="boxchat">
                     <div class="author">
-                      <img src="data:image/png;base64,$avatar1" style="border-radius: 50%; height: 30px; width: 30px">
+                      <img src="data:image/png;base64,$avatar" style="border-radius: 50%; height: 30px; width: 30px">
                       <p style="margin: 5px 10px 0px 15px">
                         <b style="font-size: 15px">$row[name]</b>
                         <i style="font-size: 13px">$row[timeSend]</i>
@@ -189,7 +189,7 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
                 echo <<< data
                   <div id="boxchat">
                     <div class="author">
-                      <img src="data:image/png;base64,$avatar1" style="border-radius: 50%; height: 30px; width: 30px">
+                      <img src="data:image/png;base64,$avatar2" style="border-radius: 50%; height: 30px; width: 30px">
                       <p style="margin: 5px 10px 0px 15px">
                         <b style="font-size: 15px">$row[name]</b>
                         <i style="font-size: 13px">$row[timeSend]</i>
