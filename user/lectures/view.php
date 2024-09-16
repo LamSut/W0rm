@@ -110,7 +110,7 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
           ?> -->
 
           <?php
-          $limit = 6;
+          $limit = 5;
           $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
           $offset = ($currentPage - 1) * $limit;
           

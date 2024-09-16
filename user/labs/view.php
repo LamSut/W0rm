@@ -1,7 +1,6 @@
 <?php
 
 require_once "../../login/config.php";
-require '../../vendor/autoload.php';
 require '../../config-openstack.php';
 
 $server->retrieve();

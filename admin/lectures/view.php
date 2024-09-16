@@ -1,4 +1,5 @@
 <?php
+require '../../vendor/autoload.php';
 require_once "../../login/config.php";
 session_start();
 
@@ -98,7 +99,7 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
     <section class="lecture-container">
       <div class="lectures">
         <?php
-        $limit = 6;
+        $limit = 5;
         $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
         $offset = ($currentPage - 1) * $limit;
         

@@ -1,4 +1,5 @@
 <?php
+    require '../../vendor/autoload.php';
     require_once "../../login/config.php";
     // require_once "Lecture.php";
 
@@ -12,8 +13,19 @@
 
     if ($result->num_rows > 0) {
         $lecture = $result -> fetch_assoc();
-        $sql = "DELETE FROM lectures WHERE id_lectures = ? AND idacc = ?";
+
+        $sql = "DELETE FROM newsfeed WHERE id_lectures = ?";
         $stmt = $GLOBALS['db'] -> prepare($sql);
+        $stmt -> bind_param("s", $lecture['id_lectures']);
+        $stmt -> execute();
+
+        $sql1 = "DELETE FROM chats WHERE id_lectures_chats = ?";
+        $stmt = $GLOBALS['db'] -> prepare($sql1);
+        $stmt -> bind_param("s", $lecture['id_lectures']);
+        $stmt -> execute();
+
+        $sql2 = "DELETE FROM lectures WHERE id_lectures = ? AND idacc = ?";
+        $stmt = $GLOBALS['db'] -> prepare($sql2);
         $stmt -> bind_param("ss", $lecture['id_lectures'], $lecture['idacc']);
         $stmt -> execute();
         // header('location:' . $_SERVER['PHP_SELF']);
