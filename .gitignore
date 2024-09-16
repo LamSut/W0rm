@@ -3,3 +3,4 @@ composer.json
 composer.lock
 config-openstack.php
 config.php
+.env
