@@ -1,4 +1,5 @@
 <?php
+require '../../vendor/autoload.php';
 require_once "../../login/config.php";
 session_start();
 
