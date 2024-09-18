@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/92548f9f-f13a-4798-888d-f9d328f50f37)# PHP OpenStack SDK
+# PHP OpenStack SDK
 
 
 ![Unit tests](https://github.com/php-opencloud/openstack/actions/workflows/unit_tests.yml/badge.svg)
