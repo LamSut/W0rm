@@ -52,6 +52,8 @@ This change was introduced in [#184](https://github.com/php-opencloud/openstack/
 
 ```bash
 composer require php-opencloud/openstack
+```
+```bash
 composer require vlucas/phpdotenv
 ```
 
