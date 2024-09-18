@@ -1,4 +1,4 @@
-# PHP OpenStack SDK
+![image](https://github.com/user-attachments/assets/92548f9f-f13a-4798-888d-f9d328f50f37)# PHP OpenStack SDK
 
 
 ![Unit tests](https://github.com/php-opencloud/openstack/actions/workflows/unit_tests.yml/badge.svg)
@@ -52,6 +52,7 @@ This change was introduced in [#184](https://github.com/php-opencloud/openstack/
 
 ```bash
 composer require php-opencloud/openstack
+composer require vlucas/phpdotenv
 ```
 
 ## Contributing
