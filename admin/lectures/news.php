@@ -128,9 +128,23 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
         $stmtXXX -> execute();
         $resultXXX = $stmtXXX -> get_result();
 
+        function preventXssAndParseAnchors(string $str): string {
+          $url_regex = "/\b((https?:\/\/?|www\.)[^\s()<>]+(?:\([\w\d]+\)|([^[:punct:]\s]|\/)))/";
+
+          $str = htmlspecialchars($str, ENT_QUOTES, 'UTF-8');
+
+          preg_match_all($url_regex, $str, $urls);
+
+          foreach ($urls[0] as $url) {
+            $str = str_replace($url, "<a href='$url' class='message_link' target='_blank'>$url</a>", $str);
+          }
+          return $str;
+        }
+
         if($resultXXX->num_rows > 0){
           while($row = $resultXXX->fetch_assoc()){
             $avatar1 = base64_encode($row['avatar']);
+            $handleMessage = preventXssAndParseAnchors($row['textNews']);
             echo <<< data
               <div id="boxchat" style="margin-top: 20px">
                 <div class="author">
@@ -145,7 +159,7 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
                   </a>
                 </div>
                 <div class="message" style="font-size: 18px; margin-left:4px">
-                  $row[textNews]
+                  $handleMessage
                 </div>
               </div>
             data;
@@ -287,7 +301,6 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
       });
       replacement.appendChild(cancelEle);
     }
-    
   </script>
     <?php
       if(isset($_GET['id_lectures'])) {
