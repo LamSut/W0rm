@@ -296,7 +296,8 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
       </div>
    </section> 
   <script src="../javascript.js"></script>
-  <?php include '../footer.php';?>
+
+  <?php include("../footer.php");?>
 </body>
 
 </html>

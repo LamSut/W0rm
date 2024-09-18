@@ -30,11 +30,13 @@ if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1){
 $style = "style.css"; // Default css for light mode
 $logo = "Logo.png";
 $settingBTN = "settings-icon.png";
+$styleDHH="style-DHH.css";
 
 if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
   $style = "style-dark.css";
   $logo = "Dark-Logo.png";  
   $settingBTN = "Dark-settings-icon.png";
+  $styleDHH="style-dark-DHH.css";
 }
 
 if (isset($_POST['cmt-content'])) {
@@ -65,6 +67,7 @@ if (isset($_POST['cmt-content'])) {
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="../../<?php echo $style; ?>?v=<?php echo time(); ?>">
+<link rel="stylesheet" href="../../<?php echo $styleDHH; ?>?v=<?php echo time(); ?>">
 <style>
   #cmt-content{
     display: block;
@@ -121,6 +124,7 @@ if (isset($_POST['cmt-content'])) {
       document.getElementById("cmt-content").value="";
     } 
   </script>
+  <?php include("../../footer.php");?>
 </body>
 
 </html>
