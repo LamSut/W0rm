@@ -19,21 +19,26 @@ composer require vlucas/phpdotenv
 
 ## Configuration
 
-* .env
-mysql_host='localhost'
-mysql_username='root'
-mysql_password=''
-mysql_database='hack'
-mysql_port='3307'
+The .env file is essential for storing sensitive configuration details like API keys, database credentials, and other secrets. Here's how to create one:
+Create a new file named .env in your project root directory (the same directory as your composer.json file).
 
-stack_authUrl='http://192.168.1.100/identity/v3'
-stack_region='RegionOne'
+Inside the .env file, define your environment variables using the following syntax:
+```bash
+mysql_host=
+mysql_username=
+mysql_password=
+mysql_database=
+mysql_port=
 
-stack_userID='f88d6cd3c7fe4a1eb36974bffe90187c'
-stack_password='suttocdo'
+stack_authUrl=
+stack_region=
+stack_userID=
+stack_password=
 
-stack_projectID='03fd442c1d2d45d8bda30c56b4c1e2c4'
+stack_projectID=
 
-stack_attackerID='1e5ac608-0e84-474f-8515-4c1f28120b5d'
-stack_targetID='ad966429-a074-418f-a4e4-61943efd2ec0'
+stack_attackerID=
+stack_targetID=
+```
+Important:  Never commit your .env file to version control (e.g., Git). This is because it might contain sensitive information
 
