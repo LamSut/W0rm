@@ -21,7 +21,11 @@
 
 /*footer*/
 .footer{
-    margin: 100px 0px 20px 100px;
+    background-color: #111111;
+    margin: 40px 0px 0px 0px;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    padding: 10px 0px 0px 100px;
   }
   
   .footer .footer-container{

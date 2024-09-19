@@ -116,7 +116,7 @@ if (isset($_POST['darkMode'])) {
     </div>
   </div>
   <script src="../../javascript.js"></script>
-  <?php include("../../footer.php");?>
+
 </body>
 
 </html>

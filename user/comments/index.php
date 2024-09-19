@@ -124,6 +124,7 @@ if (isset($_POST['cmt-content'])) {
       document.getElementById("cmt-content").value="";
     } 
   </script>
+  <br><br><br>
   <?php include("../../footer.php");?>
 </body>
 

@@ -28,11 +28,13 @@
   }
 
   $style = "style.css";
+  $styleDHH = "style-DHH.css";
   $logo = "Logo.png";
   $settingBTN = "settings-icon.png";
 
   if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
     $style = "style-dark.css";
+    $styleDHH = "style-dark-DHH.css";
     $logo = "Dark-Logo.png";
     $settingBTN = "Dark-settings-icon.png";
   }
@@ -45,6 +47,7 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="../../<?php echo $style; ?>?v=<?php echo time(); ?>">
+<link rel="stylesheet" href="../../<?php echo $styleDHH; ?>?v=<?php echo time(); ?>">
 <title>New Challenge</title>
 </head>
 
@@ -94,7 +97,7 @@
         <input type="text" id="title" name="title" style="height:25px; width:250px; margin-top: 40px; font-size: 1.4rem;" maxlength="50" required><br><br>
       </div>
       <div>
-        <h2>New CTF Challenge</h2>
+        <h3>New CTF Challenge</h3>
       </div>
       <div>
         <label for="des"><b>Description:</b></label><br>
@@ -131,7 +134,7 @@
   
   <script src="../../javascript.js"></script>
   <script src="../../javascriptCTF.js"></script>
-
+  <?php include '../../footer.php';?>
 </body>
 
 </html>
