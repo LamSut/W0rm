@@ -34,6 +34,7 @@ $logo = "Logo.png";
 $settingBTN = "settings-icon.png";
 $editLectureBTN = "edit-icon.png";
 $deleteLectureBTN = "Delete.png";
+$styleDHH="style-DHH.css";
 
 if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
   $style = "style-dark.css";
@@ -42,6 +43,7 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
   $settingBTN = "Dark-settings-icon.png";
   $editLectureBTN = "Dark-edit-icon.png";
   $deleteLectureBTN = "Dark-Delete.png";
+  $styleDHH="style-dark-DHH.css";
 }
 ?> 
 
@@ -52,7 +54,7 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="../../<?php echo $style; ?>?v=<?php echo time(); ?>">
 <link rel="stylesheet" href="../../<?php echo $styleNDB; ?>?v=<?php echo time(); ?>">
-<!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" /> -->
+<link rel="stylesheet" href="../../<?php echo $styleDHH; ?>?v=<?php echo time(); ?>">
 <title>Lectures</title>
 </head>
 
@@ -266,7 +268,7 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
   </div>
   
   <script src="../../javascript.js"></script>
-  
+  <?php include("../../footer.php") ?>
 </body>
 
 </html>

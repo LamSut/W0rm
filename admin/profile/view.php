@@ -30,6 +30,7 @@ if (isset($_SESSION['admin']) && $_SESSION['admin'] == 0){
 $style = "style.css";
 $logo = "Logo.png";
 $settingBTN = "settings-icon.png";
+$styleDHH = "style-DHH.css";
 
 $remaining = "#D6D6D6";
 $remainingHover = "#DDDDDD";
@@ -45,6 +46,7 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
   $style = "style-dark.css";
   $logo = "Dark-Logo.png";
   $settingBTN = "Dark-settings-icon.png";
+  $styleDHH = "style-dark-DHH.css";
 
   $remaining = "#333333";
   $remainingHover = "#444444";
@@ -75,6 +77,7 @@ mysqli_close($db);
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="../../<?php echo $style; ?>?v=<?php echo time(); ?>">
+<link rel="stylesheet" href="../../<?php echo $styleDHH; ?>?v=<?php echo time(); ?>">
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <title>Profile</title>
 </head>
@@ -107,7 +110,7 @@ mysqli_close($db);
     </div>
   </div>
 
-  <div id="content" style="margin-top:160px">
+  <div id="content-profile" style="margin-top:160px; width: auto; height: 550px;">
     <div style="float: left; width: 30%; margin-left:10px">
       <br><br>
       <img id="avatar" src="data:image/png;base64,<?php echo $avatar; ?>">
@@ -278,6 +281,7 @@ mysqli_close($db);
     });
 
     </script>
+    <?php include("../../footer.php") ?>
 </body>
 
 </html>

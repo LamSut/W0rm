@@ -33,12 +33,14 @@ $style = "style.css";
 $styleLXT = "style-LXT.css";
 $logo = "Logo.png";
 $settingBTN = "settings-icon.png";
+$styleDHH="style-DHH.css";
 
 if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
   $style = "style-dark.css";
   $styleLXT = "style-dark-LXT.css";
   $logo = "Dark-Logo.png";
   $settingBTN = "Dark-settings-icon.png";
+  $styleDHH="style-dark-DHH.css";
 }
   $username = $_COOKIE["idacc"];
   $_SESSION['idacc'] = $username;
@@ -63,6 +65,7 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
   <meta http-equiv="refresh">
   <link rel="stylesheet" href="../../<?php echo $style; ?>?v=<?php echo time(); ?>">
   <link rel="stylesheet" href="../../<?php echo $styleLXT; ?>?v=<?php echo time(); ?>">
+  <link rel="stylesheet" href="../../<?php echo $styleDHH; ?>?v=<?php echo time(); ?>">
   <title>Lectures</title>
 </head>
 
@@ -294,5 +297,7 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
         echo "No lecture found";
       }
     ?>
+
+  <?php include("../../footer.php") ?>
   </body>
 </html>
