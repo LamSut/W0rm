@@ -5,10 +5,16 @@ PHP web application for cybersecurity education, utilizing the OpenStack cloud p
 ## Objectives
 
 * Building a security testing practice environment and providing knowledge about Information Security for students of Can Tho University.
-  
 * Implementing lectures and challenges on Information Security theory, attack and defense techniques in cyberspace.
-  
 * Integrating Cloud Computing technology to build attack VMs and target VMs for security testing exercises.
+
+## Key Components
+
+OpenStack Cloud Computing Infrastructure manages attack and target VMs for security testing challenges deployed on the web application.
+The application consists of three parts:
+* Classes will provide knowledge in the field of Information Security for students through lectures and documents.
+* CTF challenges with topics such as Forensics, Web Exploitation, Reverse Engineering, Cryptography, ...
+* Security testing exercises will be practiced by students through the VNC Console on the application. This Console will connect to the screen of the attack VM that has been built on the OpenStack platform, from which we can attack the target VM according to the requirements of the exercise.
 
 ![Screenshot 2024-09-18 075419](https://github.com/user-attachments/assets/42b89075-a3cc-4f23-86ee-46a475260d4d)
 
