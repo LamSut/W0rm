@@ -1,6 +1,15 @@
 # W0rm
 
 PHP web application for cybersecurity education, utilizing the OpenStack cloud platform for constructing attack/target machines.
+
+## Objectives
+
+* Building a security testing practice environment and providing knowledge about Information Security for students of Can Tho University.
+  
+* Implementing lectures and challenges on Information Security theory, attack and defense techniques in cyberspace.
+  
+* Integrating Cloud Computing technology to build attack VMs and target VMs for security testing exercises.
+
 ![Screenshot 2024-09-18 075419](https://github.com/user-attachments/assets/42b89075-a3cc-4f23-86ee-46a475260d4d)
 
 ## Requirements
