@@ -499,3 +499,453 @@ textarea#hint,
 textarea#des {
   resize: none;
 }
+/* DHH */
+/* DHH */
+/* DHH */
+/*footer*/
+
+/*set up color and font*/
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=K2D:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+:root{
+   --main-color:#006e65;
+   --white:#0b2239;
+   --ctu-blue: #0d39d8;
+   --neon-green: #8ded20;
+   --neon-yellow: #c9f40b;
+   --sec-color: #46cf0f;
+   --red:#e74c3c;
+   --white:#fff;
+   --black:#222;
+   --light-color:#c7c3c3;
+   --main-bg-color:#dfdfdf;
+}
+
+.footer{
+  background-color: #dedede;
+  margin: 40px 0px 0px 0px;
+  padding: 10px 0px 0px 0px;
+  }
+  
+  .footer .footer-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 300px);
+    justify-content: space-between;
+    gap: 5px;
+    padding-left: 8%;
+  }
+  
+  .footer .footer-container .footer-box{
+    color: var(--dark-blue);
+    padding: 10px;
+    margin-top: 5px;
+  }
+  
+  .footer .footer-container .footer-box h4{
+    margin: 0px 0px 10px 0px;
+    font-size: 25px;
+    font-weight: bold;
+    font-family: "Heavitas", sans-serif;
+    text-transform: uppercase;
+    background: linear-gradient(180deg, var(--main-color) 25% ,var(--dark-blue));
+    background-clip: text;
+  }
+  
+  .footer .footer-container .footer-box li{
+    list-style-type: none;
+  }
+  
+  .footer .footer-container .footer-box li a{
+    color: var(--dark-blue);
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 5px;
+    transition: all 0.4s ease;
+  }
+  
+  .footer .footer-container .footer-box li a:hover{
+    color: var(--main-color);
+    text-shadow: 0 3px 15px var(--main-color);
+  }
+  
+  .footer .footer-container .footer-box img{
+    width: 150px;
+  }
+  
+  .footer .footer-container .footer-box .footer-text p{
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--dark-blue);
+  }
+  
+  .footer .footer-container .footer-box .icons i{
+    font-size: 25px;
+    color: var(--dark-blue);
+    transition: all 0.5s ease;
+  }
+  
+  .footer .footer-container .footer-box .icons i:hover{
+    color: var(--main-color);
+  }
+  
+  .introduction{
+    margin-top: 120px;
+    padding-top: 40px;
+    text-align: center;
+    justify-content: center;
+  }
+  
+  .introduction .box-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px; margin: auto;
+    padding: 10px 10px;
+    font-size: 20px;
+  }
+  
+  .introduction .box-container .box{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 500px);
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 10px 5px;
+    margin: 10px 5px;
+  }
+  
+  .introduction .box-container .box img{
+    width: 450px;
+  }
+  
+  .introduction .box-container .box p{
+    text-align: left;
+    text-align: justify;
+    font-size: 18px;
+    color: var(--dark-blue);
+  }
+  
+  .introduction .box-container .box p span{
+    font-weight: 700;
+    font-size: 23px;
+    color: var(--main-color);
+  }
+  
+  .introduction .box-container .box p a{
+    text-decoration: none;
+    font-family: 'K2D';
+    font-weight: 700;
+    font-size: 20px;
+    color: var(--ctu-blue);
+  }
+  
+  /*feature box*/
+  .feature-box{
+    margin: 10px 250px;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .feature-box .box-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    justify-content: center;
+    align-items: flex-start;
+    gap: 15px; 
+    padding: 10px 20px 10px 20px;
+    flex: 1 100px;
+  }
+  
+  .feature-box .box-container .box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 7px;
+    padding: 15px;
+    transition: all 0.4s ease;
+  }
+  
+  .feature-box .box-container .box:hover{
+    background-color: #ededed;
+    transform: scale(1.025);
+    box-shadow: 2px 2px 4px #006e65;
+  }
+  
+  .feature-box .box-container .box img{
+    position: relative; 
+    width: 100px; 
+    height: 100px; 
+    overflow: hidden; 
+    border-radius: 10%;
+    margin-bottom: 5px;
+  }
+  
+  .feature-box .box-container .box h3{
+    font-size: 25px;
+    font-weight: 600;
+    margin: 0px;
+    color: var(--main-color);
+  }
+  
+  .feature-box .box-container .box p{
+    font-size: 18px;
+    font-weight: 400;
+    text-align: center;
+    justify-content: center;
+    color: var(--dark-blue);
+  }
+  
+  /* info */
+  .info{
+    margin: 15px auto;
+    padding: 15px;
+  }
+  
+  .info h1{
+    font-size: 30px;
+    text-transform: uppercase;
+    text-align: center;
+    margin: 10px;
+    font-weight: 800;
+  }
+  
+  .info .box-container{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+  .info .box-container .box{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 300px);
+    justify-content: center;
+    align-items: flex-start;
+    gap: 30px; padding: 5px;
+    flex: 1 100px;
+  }
+  
+  .info .box-container .box .minibox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 300px;
+    align-items: center;
+    border-radius: 10px;
+    padding: 10px;
+    transition: all 0.4s ease;
+  }
+  
+  .info .box-container .box .minibox:hover{
+    box-shadow: 2px 2px 4px var(--main-color);
+  }
+  
+  .info .box-container .box .minibox img{ 
+    height: 150px;
+    align-items: center;
+    margin: 5px;
+    padding: 10px;
+    transition: all 0.4s ease;
+    cursor: pointer;
+  }
+  .info .box-container .box .minibox img:hover{ 
+    transform: scale(1.1);
+  }
+  
+  .info .box-container .box .minibox span{
+    text-decoration: none;
+    text-align: center;
+    font-weight: 400;
+    font-size: 18px;
+    color:var(--dark-blue);
+  }
+  
+  /* about */
+  .about{
+    margin: 20px auto;
+    padding: 10px 10px;
+  }
+  
+  .about .member{
+    display: grid;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  
+  .about .member .member-container {
+    display: grid;
+    grid-template-columns: repeat(3,350px);
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px; padding: 5px;
+    flex: 1 1 100px;
+  }
+  
+  .about .member .member-container .member-box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+    border-radius: 10px;
+    padding: 10px;
+    transition: all 0.4s ease-out;
+  }
+  
+  .about .member .member-container .member-box span{
+    font-size: 20px;
+    color: var(--main-color);
+    text-align: center;
+    text-transform: capitalize;
+    font-weight: bold;
+    padding: 5px;
+    margin: 3px;
+  }
+  
+  .about .member .member-container .member-box h3{
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 15px;
+    color: var(--dark-blue);
+  }
+  
+  .about .member .member-container .member-box .member-img{
+    position: relative; 
+    width: 170px; 
+    height: 170px; 
+    overflow: hidden; 
+    border-radius: 50%;
+    margin-bottom: 10px;
+  }
+  
+  .about .member .member-container .member-box .member-img img{
+    width: 100%; height: auto;
+  }
+  
+  .about .member .member-container .member-box:hover{
+    transform: scale(1.025);
+    box-shadow: 2px 2px 4px var(--main-color);
+  }
+   
+  /*page-content*/
+    
+  .page-content{
+    margin: 8px;
+    padding: 20px;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .page-content h1{
+    text-transform: uppercase;
+    font-size: 30px;
+    font-weight: 800;
+    color: var(--main-color);
+  }
+
+  .page-content .box-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px; margin: 5px;
+    padding: 8px 8px;
+    font-size: 20px;
+  }
+
+  .page-content .box-container .box{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 500px);
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 3px;
+    margin: 2px 5px;
+  }
+
+  .page-content .box-container .box img{
+    width: 400px;
+    border-radius: 10px;
+  }
+
+  .page-content .box-container .box h3{
+    font-size: 30px;
+    margin-bottom: 0px;
+    text-align: left;
+    text-transform: uppercase;
+  }
+  
+  .page-content .box-container .box p{
+    text-align: left;
+    text-align: justify;
+    font-size: 18px;
+  }
+
+  .page-content .box-container .box p span{
+    font-weight: 700;
+    font-size: 23px;
+    color: var(--main-color);
+  }
+
+    /*note box*/
+    .note-box{
+      margin: 10px 250px;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .note-box .box-container{
+      display: grid;
+      grid-template-columns: repeat(3, minmax(400px, 1fr));
+      justify-content: center;
+      align-items: flex-start;
+      gap: 15px; 
+      padding: 10px 20px 10px 20px;
+      flex: 1 100px;
+    }
+    
+    .note-box .box-container .box{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-radius: 7px;
+      padding: 15px;
+      transition: all 0.4s ease;
+    }
+    
+    .note-box .box-container .box:hover{
+      background-color: #ededed;
+      transform: scale(1.025);
+      box-shadow: 2px 2px 4px #006e65;
+    }
+    
+    .note-box .box-container .box img{
+      position: relative; 
+      width: 100px; 
+      height: 100px; 
+      overflow: hidden; 
+      border-radius: 10%;
+      margin-bottom: 5px;
+    }
+    
+    .note-box .box-container .box h3{
+      font-size: 23px;
+      font-weight: 600;
+      margin: 0px;
+      color: var(--main-color);
+    }
+    
+    .note-box .box-container .box p{
+      font-size: 18px;
+      font-weight: 400;
+      text-align: center;
+      justify-content: center;
+      color: var(--dark-blue);
+    }
+    
+
+  /* end DHH */
+  /* end DHH */
+  /* end DHH */

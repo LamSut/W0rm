@@ -29,14 +29,12 @@ if (isset($_SESSION['admin']) && $_SESSION['admin'] == 0){
 
 $style = "style.css";
 $styleNDB = "style-NDB.css";
-$styleDHH = "style-DHH.css";
 $logo = "Logo.png";
 $settingBTN = "settings-icon.png";
 
 if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
   $style = "style-dark.css";
   $styleNDB = "style-dark-NDB.css";
-  $styleDHH = "style-dark-DHH.css";
   $logo = "Dark-Logo.png";
   $settingBTN = "Dark-settings-icon.png";
 }
@@ -49,7 +47,6 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="../../<?php echo $style; ?>?v=<?php echo time(); ?>">
 <link rel="stylesheet" href="../../<?php echo $styleNDB; ?>?v=<?php echo time(); ?>">
-<link rel="stylesheet" href="../../<?php echo $styleDHH; ?>?v=<?php echo time(); ?>">
 <title>Lectures</title>
 </head>
 

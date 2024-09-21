@@ -28,13 +28,11 @@ if (isset($_SESSION['admin']) && $_SESSION['admin'] == 0){
 }
 
 $style = "style.css";
-$styleDHH = "style-DHH.css";
 $logo = "Logo.png";
 $settingBTN = "settings-icon.png";
 
 if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
   $style = "style-dark.css";
-  $styleDHH = "style-dark-DHH.css";
   $logo = "Dark-Logo.png";
   $settingBTN = "Dark-settings-icon.png";
 }
@@ -46,7 +44,6 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="../../<?php echo $style; ?>?v=<?php echo time(); ?>">
-<link rel="stylesheet" href="../../<?php echo $styleDHH; ?>?v=<?php echo time(); ?>">
 <title>CTF Challenges</title>
 </head>
 
