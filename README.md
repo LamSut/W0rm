@@ -4,7 +4,7 @@ PHP web application for cybersecurity education, utilizing the OpenStack cloud p
 
 ## Objectives
 
-* Building a security testing practice environment and providing knowledge about Information Security for students of Can Tho University.
+* Building a web application that serves as a security testing practice environment and providing knowledge about Information Security for students of Can Tho University.
 * Implementing lectures and challenges in the field of Information Security.
 * Integrating Cloud Computing technology to build attack/target VMs for security testing exercises.
 
