@@ -108,10 +108,18 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
       
       if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
+          $stmt_count = $db -> prepare("SELECT count(idctf) AS solved FROM ctfattempt WHERE idctf = ?");
+          $stmt_count->bind_param("s", $row["idctf"]);
+          $stmt_count -> execute();
+          $result_count = $stmt_count -> get_result();
+          $count = $result_count -> fetch_assoc();
           echo "<a href='test.php?idctf=" . $row['idctf'] . "'>";
           echo "<div class='ctf-row'>";
             echo "<h4>" . $row['title'] . "</h4>";
-            echo "<p>" . $row['type'] . "</p>";
+            echo "<div style='display: flex; justify-content: space-between; margin: 30px 30px 30px 0px;'>";
+            echo "<span><p style='display: inline;'>" . $row['type'] . "</p></span>"; 
+            echo "<span style='position: relative; align-content: center; font-size: 14px; bottom: -10px'> Solved: " . $count["solved"] . " </span>";
+            echo "</div>";
           echo "</div>";
           echo "</a>";
         }
