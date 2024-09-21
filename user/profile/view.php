@@ -134,7 +134,7 @@ mysqli_close($db);
     </div>
   </div>
 
-  <div id="content-profile" style="margin-top:160px; width: auto; height: 550px;">
+  <div id="content-profile" style="margin:180px 60px 20px 60px; width: auto; height: 550px;">
     <div style="float: left; width: 30%; margin-left:10px">
       <br><br>
       <img id="avatar" src="data:image/png;base64,<?php echo $avatar; ?>">
