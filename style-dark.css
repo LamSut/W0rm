@@ -319,7 +319,7 @@ select {
   transition: all 0.5s ease;
 }
 
-#ctf-container a.attempedCTF {
+#ctf-container a.attemptedCTF {
   cursor: pointer;
   background-color: #8adb20;
   color: #333333;
@@ -327,7 +327,7 @@ select {
   transition: all 0.5s ease;
 }
 
-#ctf-container a.attempedCTF:hover {
+#ctf-container a.attemptedCTF:hover {
   cursor: pointer;
   background-color: #87d40b;
   color: #111111;

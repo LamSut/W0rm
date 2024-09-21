@@ -110,7 +110,7 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
           $stmt2->execute();
           $attemptResult = $stmt2->get_result();
           if ($attemptResult->num_rows > 0) {
-            $attemptedClass = "attempedCTF"; // add class if attempted
+            $attemptedClass = "attemptedCTF"; // add class if attempted
           }
           $stmt2->close();
       
@@ -119,7 +119,7 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
           $stmt_count -> execute();
           $result_count = $stmt_count -> get_result();
           $count = $result_count -> fetch_assoc();
-          echo "<a href='test.php?idctf=" . $row['idctf'] . "'>";
+          echo "<a class='" . $attemptedClass . "' href='test.php?idctf=" . $row['idctf'] . "'>";
           echo "<div class='ctf-row'>";
             echo "<h4>" . $row['title'] . "</h4>";
             echo "<div style='display: flex; justify-content: space-between; margin: 30px 30px 30px 0px;'>";
