@@ -30,13 +30,11 @@ if (!isset($_SESSION['admin'])){
 }
 
 $style = "style.css";
-$styleLXT = "style-LXT.css";
 $logo = "Logo.png";
 $settingBTN = "settings-icon.png";
 
 if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
   $style = "style-dark.css";
-  $styleLXT = "style-dark-LXT.css";
   $logo = "Dark-Logo.png";
   $settingBTN = "Dark-settings-icon.png";
 }
@@ -62,7 +60,6 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="refresh">
   <link rel="stylesheet" href="../../<?php echo $style; ?>?v=<?php echo time(); ?>">
-  <link rel="stylesheet" href="../../<?php echo $styleLXT; ?>?v=<?php echo time(); ?>">
   <title>Lectures</title>
 </head>
 
