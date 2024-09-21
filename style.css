@@ -1056,11 +1056,6 @@ button#addNewsBtn_chats:hover {
   transition: all 0.5s ease;
 }
 
-input#submit-btn,
-button#cancel-btn {
-  top: 10px;
-  left: 15px;
-}
 
 a#removeBtn {
   appearance: button;

@@ -90,8 +90,8 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
       <a href="../labs/view.php">Labs</a>
     </div>
   </div>
+  <div id="content">
   <?php
-
     $stmtLecture = $db -> prepare ("SELECT title FROM lectures WHERE id_lectures = ?");
     $stmtLecture -> bind_param("s", $id_lectures);
     $stmtLecture -> execute(); // Execute the query and store the result
@@ -101,7 +101,7 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
     if ($resultLecture->num_rows > 0) {
       $row = $resultLecture->fetch_assoc(); // Fetch the first row as an associative array
       $title = $row['title']; // Extract the 'title' value from the row
-      echo "<h3 style='margin-top: 170px; margin-bottom: 0px'> $title </h3>";
+      echo "<h3> $title </h3>";
     } else {
       echo "<h3> No lecture found with id: $id_lectures <h3>"; // Handle no results case
     }
@@ -257,6 +257,7 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
       submitEle.setAttribute('id', 'submit-btn');
       submitEle.setAttribute('name', 'sendForm_chats');
       submitEle.setAttribute('type', 'submit');
+      submitEle.style.margin = '10px 0px 0px 20px';
       submitEle.innerHTML = 'Submit';
       submitEle.addEventListener('submit', event => {
         event.preventDefault();
@@ -267,6 +268,7 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
       const cancelEle = document.createElement('button');
       cancelEle.setAttribute('id', 'cancel-btn');
       cancelEle.setAttribute('type', 'button');
+      cancelEle.style.margin = '10px 0px 0px 10px';
       cancelEle.innerHTML = 'Cancel';
       cancelEle.addEventListener('click', () => {
         replacement.replaceWith(btnChange); // Replace form with button on cancel
@@ -291,7 +293,7 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
         echo "No lecture found";
       }
     ?>
-
+  </div>
   <?php include("../../footer.php") ?>
   </body>
 </html>
