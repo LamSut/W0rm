@@ -3,7 +3,6 @@ body {
   font-size: 1.1rem;
   font-family: "Open Sans", sans-serif;
   color: #333333;
-  width: 90%;
   margin: auto;
 }
 
@@ -97,8 +96,9 @@ select {
   font-size: 1.3rem;
   top: 0;
   margin: auto;
+  margin-left: 0.5%;
   height: 100px;
-  width: 90%;
+  width: 99%;
   display: block;
   transition: top 1s;
   z-index: 1;
@@ -182,7 +182,7 @@ select {
 #navbar {
   background-color: #cfcfcf;
   position: fixed;
-  width: 90%;
+  width: 99%;
   border-radius: 8px;
   z-index: -1;
   box-shadow: 0px 2px 1px 0px #aaaaaa;

@@ -21,11 +21,9 @@
 
 /*footer*/
 .footer{
-    background-color: #111111;
+    background-image: linear-gradient(to left, #131313, #1c1c1c, #212903);
     margin: 40px 0px 0px 0px;
-    border-top-left-radius: 16px;
-    border-top-right-radius: 16px;
-    padding: 10px 0px 0px 100px;
+    padding: 10px 0px 0px 0px;
   }
   
   .footer .footer-container{
@@ -33,6 +31,7 @@
     grid-template-columns: repeat(auto-fit, 300px);
     justify-content: space-between;
     gap: 5px;
+    padding-left: 8%;
   }
   
   .footer .footer-container .footer-box{
