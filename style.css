@@ -264,7 +264,7 @@ select {
 }
 
 #ctf-navbar {
-  height: 410px;
+  height: 444px;
   width: 18%;
   float: left;
   font-weight: bold;
@@ -387,7 +387,7 @@ select {
   display: grid;
   grid-template-columns: 70% 1fr;
   grid-template-rows: 28% 52% 15%;
-  height: 340px;
+  height: 380px;
   width: 63%;
   background-color: #dfdfdf;
   margin-top: 10px;
