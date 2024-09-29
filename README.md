@@ -4,7 +4,7 @@ PHP web application for cybersecurity education, utilizing the OpenStack cloud p
 
 ## Objectives
 
-* Building a web application that serves as a security testing practice environment and providing knowledge about Information Security.
+* Building a security testing practice environment and providing knowledge about Information Security.
 * Implementing lectures and challenges in the field of Information Security.
 * Integrating Cloud Computing technology to build Attack VMs and Target VMs for security testing exercises.
 
