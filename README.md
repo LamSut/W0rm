@@ -10,8 +10,8 @@ PHP web application for cybersecurity education, utilizing the OpenStack cloud p
 
 ## Key Components
 
-OpenStack Cloud Computing Infrastructure manages attack and target VMs for security testing challenges deployed on the web application.
-The application consists of three parts:
+OpenStack Cloud Computing Infrastructure manages attack and target VMs for security testing challenges  
+deployed on the web application. The application consists of three parts:
 * Classes will provide knowledge in the field of Information Security for students through lectures and documents.
 * CTF challenges with topics such as Forensics, Web Exploitation, Reverse Engineering, Cryptography,...
 * Security testing exercises will be practiced by students through the VNC Console on the application.
@@ -57,6 +57,6 @@ stack_projectID=
 stack_attackerID=
 stack_targetID=
 ```
-The .env file is essential for storing sensitive configuration details like API keys, database credentials, and other secrets.
-Never commit your .env file to version control (e.g., Git). This is because it might contain sensitive information.
+The .env file is essential for storing sensitive configuration details like API keys, database credentials, and other secrets.  
+Never include your .env file in your version control system (e.g., Git). This is because it might contain sensitive information.
 
