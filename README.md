@@ -1,6 +1,6 @@
 # W0rm
 
-PHP web application for cybersecurity education, utilizing the OpenStack cloud platform for constructing attack/target machines.
+PHP web application for cybersecurity education, utilizing the OpenStack cloud platform for constructing security testing practice environment.
 
 ## Objectives
 
