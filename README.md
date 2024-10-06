@@ -57,6 +57,6 @@ stack_projectID=
 stack_attackerID=
 stack_targetID=
 ```
-The .env file is essential for storing sensitive configuration details like API keys, database credentials, and other secrets.  
-Never include your .env file in your version control system (e.g., Git). This is because it might contain sensitive information.
+The .env file is essential for storing sensitive configuration details like API keys, database credentials,...  
+Never include your .env file in your version control system (e.g., Git).
 
