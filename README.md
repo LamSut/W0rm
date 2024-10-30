@@ -1,6 +1,6 @@
 # W0rm
 
-PHP web application for Information Security education, utilizing the OpenStack cloud platform for constructing security testing practice environment.
+PHP web application for Information Security education, utilizing the OpenStack cloud platform for constructing security testing practice environment. Read the [Document](https://github.com/LamSut/W0rm/blob/master/THS2024-77.pdf) for further details.
 
 ## Objectives
 
