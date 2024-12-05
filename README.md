@@ -2,13 +2,13 @@
 
 PHP web application for Information Security education, utilizing the OpenStack cloud platform for constructing security testing practice environment. Read the [Document](https://github.com/LamSut/W0rm/blob/master/THS2024-77.pdf) for further details.
 
-## Objectives
+### Objectives
 
 * Building a security testing practice environment and providing knowledge about Information Security.
 * Implementing lectures and challenges in the field of Information Security.
 * Integrating Cloud Computing technology to build Attack VMs and Target VMs for security testing exercises.
 
-## Key Components
+### Key Components
 
 OpenStack Cloud Computing Infrastructure manages attack and target VMs for security testing challenges  
 deployed on the web application. The application consists of three parts:
@@ -20,13 +20,13 @@ deployed on the web application. The application consists of three parts:
 ![Screenshot 2024-09-18 075419](https://github.com/user-attachments/assets/42b89075-a3cc-4f23-86ee-46a475260d4d)
 ---
 
-## Requirements
+### Requirements
 
 * PHP >= 7.2.5
 * `ext-curl`
 * Composer
 
-## How to install
+### How to install
 
 ```bash
 composer require php-opencloud/openstack
@@ -35,7 +35,7 @@ composer require php-opencloud/openstack
 composer require vlucas/phpdotenv
 ```
 
-## Configuration
+### Configuration
 
 Create a new file named .env in your project root directory (the same directory as your composer.json file).  
 Inside the .env file, define your environment variables using the following syntax:
