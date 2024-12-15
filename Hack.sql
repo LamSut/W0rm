@@ -113,6 +113,7 @@ create table cmt(
     idacc varchar(15),
     constraint fk_idacc foreign key (idacc) references acc(idacc)
 );
+
 -- select * from cmt
 insert into cmt(content,time,idacc) values('mongki',sysdate(),'B2111933');
 insert into cmt(content,time,idacc) values('chú bé đần',sysdate(),'B4444444');
