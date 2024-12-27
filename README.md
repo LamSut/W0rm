@@ -11,8 +11,7 @@ PHP web application for Information Security education, utilizing the OpenStack 
 
 ### Key Components
 
-OpenStack Cloud Computing Infrastructure manages attack and target VMs for security testing challenges  
-deployed on the web application. The application consists of three parts:
+OpenStack private cloud computing infrastructure manages attack and target VMs for security testing challenges deployed on the web application. The application consists of three parts:
 * Classes will provide knowledge in the field of Information Security for students through lectures and documents.
 * CTF challenges with topics such as Forensics, Web Exploitation, Reverse Engineering, Cryptography,...
 * Security testing exercises will be practiced by students through the VNC Console on the application.
