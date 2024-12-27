@@ -38,8 +38,8 @@ composer require vlucas/phpdotenv
 
 ### Configuration
 
-Create a new file named .env in your project root directory (the same directory as your composer.json file).  
-Inside the .env file, define your environment variables using the following syntax:
+Create a `.env` file in your project root directory (the same directory as your composer.json file).  
+Inside the `.env` file, define your environment variables using the following syntax:
 
 ```bash
 mysql_host=
