@@ -16,6 +16,9 @@ OpenStack private cloud computing infrastructure manages attack and target VMs f
 * Security testing exercises will be practiced by students through the VNC Console on the application.
 
 ---
+![image](https://github.com/user-attachments/assets/c4d0d4c6-296a-4863-817a-32a7ecbe229c)
+
+---
 ![Screenshot 2024-09-18 075419](https://github.com/user-attachments/assets/42b89075-a3cc-4f23-86ee-46a475260d4d)
 ---
 
