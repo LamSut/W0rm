@@ -43,11 +43,11 @@ Create a `.env` file in your project root directory (the same directory as your 
 Inside the `.env` file, define your environment variables using the following syntax:
 
 ```bash
-mysql_host=
-mysql_username=
-mysql_password=
-mysql_database=
-mysql_port=
+MYSQL_HOST=
+MYSQL_USERNAME=
+MYSQL_PASSWORD=
+MYSQL_DATABASE=
+MYSQL_PORT=
 
 stack_authUrl=
 stack_region=
