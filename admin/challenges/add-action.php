@@ -1,7 +1,7 @@
 <?php
-  require __DIR__ . '//../../vendor/autoload.php';
+  require __DIR__ . '/../../vendor/autoload.php';
   require_once __DIR__ . "/Challenge.php";
-  require_once __DIR__ . "//../../login/config.php";
+  require_once __DIR__ . "/../../login/config.php";
   session_start();
 
   $title = $_POST['title'];

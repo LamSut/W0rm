@@ -1,7 +1,7 @@
 <?php
-require __DIR__ . '//../../vendor/autoload.php';
-require_once __DIR__ . "//../../login/config.php";
-require __DIR__ . '//../../config-openstack.php';
+require __DIR__ . '/../../vendor/autoload.php';
+require_once __DIR__ . "/../../login/config.php";
+require __DIR__ . '/../../config-openstack.php';
 
 $server->retrieve();
 if($server->status!='ACTIVE'){

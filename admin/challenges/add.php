@@ -1,6 +1,6 @@
 <?php
-  require __DIR__ . '//../../vendor/autoload.php';
-  require_once __DIR__ . "//../../login/config.php";
+  require __DIR__ . '/../../vendor/autoload.php';
+  require_once __DIR__ . "/../../login/config.php";
   session_start();
 
   if (!isset($_SESSION['idacc'])){
