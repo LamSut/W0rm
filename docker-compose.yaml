@@ -1,7 +1,7 @@
 version: '3.8'
 
 services:
-  web:
+  php:
     image: php:8.2-apache
     container_name: apache_php
     ports:
@@ -10,7 +10,7 @@ services:
     volumes:
       - ./:/var/www/html
     depends_on:
-      - db
+      - mysql
 
   mysql:
     image: mysql:8.0
