@@ -47,7 +47,8 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
 
   $result = $stmt->get_result();
   $row = $result->fetch_assoc();
-  $avatar = base64_encode($row['avatar']);
+  $avatar = isset($row['avatar']) ? base64_encode($row['avatar']) : '';
+
 ?> 
 
 <!DOCTYPE html>
@@ -138,7 +139,7 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
 
           if($resultXXX->num_rows > 0){
             while($row = $resultXXX->fetch_assoc()){
-              $avatar1 = base64_encode($row['avatar']);
+              $avatar1 = isset($row['avatar']) ? base64_encode($row['avatar']) : '';
               $handleMessage = preventXssAndParseAnchors($row['textNews']);
               echo <<< data
                 <div id="boxchat" style="margin-top: 20px">
@@ -179,7 +180,7 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
 
             if($resultXXX->num_rows > 0){
               while($row = $resultXXX->fetch_assoc()){
-                $avatar2 = base64_encode($row['avatar']);
+                $avatar2 = isset($row['avatar']) ? base64_encode($row['avatar']) : '';
                 echo <<< data
                   <div id="boxchat">
                     <div class="author">

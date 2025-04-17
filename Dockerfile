@@ -5,12 +5,18 @@ RUN apt-get update && apt-get install -y \
     zip \
     git \
     libzip-dev \
-    && docker-php-ext-install zip pdo pdo_mysql mysqli
+    libcurl4-openssl-dev \
+    libonig-dev \
+    && docker-php-ext-install zip pdo pdo_mysql mysqli mbstring
 
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
 
 WORKDIR /var/www/html
 
+COPY composer.json composer.lock /var/www/html/
+
+RUN composer install --no-scripts --no-autoloader
+
 COPY . /var/www/html
 
-RUN composer install
+RUN composer dump-autoload --optimize --no-scripts

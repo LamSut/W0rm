@@ -91,7 +91,7 @@ $result = $stmt->get_result();
 $row = $result->fetch_assoc();
 $gender= $row['gender'];
 $email= $row['email'];
-$avatar = base64_encode($row['avatar']);
+$avatar = isset($row['avatar']) ? base64_encode($row['avatar']) : '';
 
 mysqli_close($db);
 ?> 
