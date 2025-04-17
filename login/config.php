@@ -10,4 +10,5 @@ if($db === false){
     die("Error: connection error " . mysqli_connect_error());
 }
 
+$db->set_charset("utf8mb4");
 ?>
