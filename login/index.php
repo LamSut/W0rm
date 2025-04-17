@@ -1,7 +1,7 @@
 <?php
-require '../vendor/autoload.php'; 
-require_once "config.php";
-require_once "session.php";
+require __DIR__ . '//../vendor/autoload.php'; 
+require_once __DIR__ . "/config.php";
+require_once __DIR__ . "/session.php";
 
 $error = '';
 

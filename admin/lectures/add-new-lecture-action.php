@@ -1,7 +1,7 @@
 <?php
-require '../../vendor/autoload.php';
-require_once "../../login/config.php";
-require_once "Lecture.php";
+require __DIR__ . '//../../vendor/autoload.php';
+require_once __DIR__ . "//../../login/config.php";
+require_once __DIR__ . "/Lecture.php";
 
 $title_lecture = $_POST['title_lecture'];
 $description_lecture = $_POST['description_lecture'];

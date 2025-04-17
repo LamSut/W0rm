@@ -1,6 +1,6 @@
 {
     "require": {
-        "php-opencloud/openstack": "^3.10",
+        "php-opencloud/openstack": "3.12.0",
         "vlucas/phpdotenv": "^5.6"
     }
 }

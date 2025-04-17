@@ -1,6 +1,6 @@
 <?php
-require '../../vendor/autoload.php';
-require_once "../../login/config.php";
+require __DIR__ . '//../../vendor/autoload.php';
+require_once __DIR__ . "//../../login/config.php";
 
 // Number of comments to load per request
 $limit = 6;

@@ -1,6 +1,6 @@
 <?php
-    require '../../vendor/autoload.php';
-    require_once "../../login/config.php";
+    require __DIR__ . '//../../vendor/autoload.php';
+    require_once __DIR__ . "//../../login/config.php";
     session_start();
 
     $id_lectures = $_SESSION['id_lectures'];

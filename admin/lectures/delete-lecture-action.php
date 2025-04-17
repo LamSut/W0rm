@@ -1,7 +1,7 @@
 <?php
-    require '../../vendor/autoload.php';
-    require_once "../../login/config.php";
-    // require_once "Lecture.php";
+    require __DIR__ . '//../../vendor/autoload.php';
+    require_once __DIR__ . "//../../login/config.php";
+    // require_once __DIR__ . "/Lecture.php";
 
 
     $id_lectures = $_GET['id_lectures'];
