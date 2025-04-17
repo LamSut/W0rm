@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   php:
-    image: php:8.2-apache
+    build: .
     container_name: apache_php
     ports:
       - "80:80"
@@ -11,6 +11,8 @@ services:
       - ./:/var/www/html
     depends_on:
       - mysql
+    networks:
+      - app-network
 
   mysql:
     image: mysql:8.0
@@ -20,11 +22,12 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: ''
       MYSQL_DATABASE: 'hack'
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
     ports:
       - "3307:3306"
     volumes:
       - db_data:/var/lib/mysql
-      - Hack.sql:/docker-entrypoint-initdb.d/Hack.sql:ro
+      - ./Hack.sql:/docker-entrypoint-initdb.d/Hack.sql:ro
     networks:
       - app-network
 
@@ -32,12 +35,18 @@ services:
     image: phpmyadmin/phpmyadmin
     container_name: phpmyadmin
     environment:
-      PMA_HOST: db
+      PMA_HOST: mysql
       MYSQL_ROOT_PASSWORD: root
     ports:
       - "8081:80"
     depends_on:
       - mysql
+    networks:
+      - app-network
 
 volumes:
   db_data:
+
+
+networks:
+  app-network:
