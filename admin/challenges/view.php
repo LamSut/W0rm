@@ -105,7 +105,7 @@ if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
       
       if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
-          $stmt_count = $db -> prepare("SELECT count(idctf) AS solved FROM ctfattempt WHERE idctf = ?");
+          $stmt_count = $db -> prepare("SELECT count(idctf) AS solved FROM ctfAttempt WHERE idctf = ?");
           $stmt_count->bind_param("s", $row["idctf"]);
           $stmt_count -> execute();
           $result_count = $stmt_count -> get_result();
