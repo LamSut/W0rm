@@ -14,10 +14,10 @@ create table acc(
     darkmode bool default false
 );
 -- select * from acc
-insert into acc values('B2111933','ee79976c9380d5e337fc1c095ece8c8f22f91f306ceeb161fa51fecede2c4ba1','Trương Đặng Trúc Lâm',true,'lamb2111933@student.ctu.edu.vn',LOAD_FILE("F:/XAMPP/htdocs/Project-Web-CT214H-B2111933/img/blank.png"),false,false);
+insert into acc values('B2111933','ee79976c9380d5e337fc1c095ece8c8f22f91f306ceeb161fa51fecede2c4ba1','Truong Dang Truc Lam',true,'lamb2111933@student.ctu.edu.vn',LOAD_FILE("F:/XAMPP/htdocs/Project-Web-CT214H-B2111933/img/blank.png"),false,false);
 insert into acc values('B3333333','ee79976c9380d5e337fc1c095ece8c8f22f91f306ceeb161fa51fecede2c4ba1','LS',true,'ls@gmail.com',LOAD_FILE("F:/XAMPP/htdocs/Project-Web-CT214H-B2111933/img/blank.png"),true,true);
 insert into acc values('B4444444','ee79976c9380d5e337fc1c095ece8c8f22f91f306ceeb161fa51fecede2c4ba1','Yellow King',true,'kaiser@gmail.com',LOAD_FILE("F:/XAMPP/htdocs/Project-Web-CT214H-B2111933/img/blank.png"),false,false);
-insert into acc values('B2111999','ee79976c9380d5e337fc1c095ece8c8f22f91f306ceeb161fa51fecede2c4ba1','Hưng Gay',false,'hung2111999@student.ctu.edu.vn',LOAD_FILE("F:/XAMPP/htdocs/Project-Web-CT214H-B2111933/img/blank.png"),false,false);
+insert into acc values('B2111999','ee79976c9380d5e337fc1c095ece8c8f22f91f306ceeb161fa51fecede2c4ba1','Hung Gay',false,'hung2111999@student.ctu.edu.vn',LOAD_FILE("F:/XAMPP/htdocs/Project-Web-CT214H-B2111933/img/blank.png"),false,false);
 
 -- drop table ctf
 CREATE TABLE ctf(
@@ -116,24 +116,20 @@ create table cmt(
 
 -- select * from cmt
 insert into cmt(content,time,idacc) values('mongki',sysdate(),'B2111933');
-insert into cmt(content,time,idacc) values('chú bé đần',sysdate(),'B4444444');
 insert into cmt(content,time,idacc) values('monkey',sysdate(),'B2111933');
 insert into cmt(content,time,idacc) values('dog',sysdate(),'B3333333');
 insert into cmt(content,time,idacc) values('cow',sysdate(),'B3333333');
 insert into cmt(content,time,idacc) values('sfdfgdvcbhjxfvccvxzhvxbjhgasbdhajnvb xccb zxnc cxbbxcbncxkcnxjkxnccj á á á vjdkvhkkuchvukjhi',sysdate(),'B3333333');
 insert into cmt(content,time,idacc) values('mongki',sysdate(),'B2111933');
-insert into cmt(content,time,idacc) values('chú bé đần',sysdate(),'B4444444');
 insert into cmt(content,time,idacc) values('monkey',sysdate(),'B2111933');
 insert into cmt(content,time,idacc) values('dog',sysdate(),'B3333333');
 insert into cmt(content,time,idacc) values('cow',sysdate(),'B3333333');
 insert into cmt(content,time,idacc) values('mongki',sysdate(),'B2111933');
-insert into cmt(content,time,idacc) values('chú bé đần',sysdate(),'B4444444');
 insert into cmt(content,time,idacc) values('monkey',sysdate(),'B2111933');
 insert into cmt(content,time,idacc) values('dog',sysdate(),'B3333333');
 insert into cmt(content,time,idacc) values('cow',sysdate(),'B3333333');
 insert into cmt(content,time,idacc) values('sfdfgdvcbhjxfvccvxzhvxbjhgasbdhajnvb xccb zxnc cxbbxcbncxkcnxjkxnccj á á á vjdkvhkkuchvukjhi',sysdate(),'B3333333');
 insert into cmt(content,time,idacc) values('mongki',sysdate(),'B2111933');
-insert into cmt(content,time,idacc) values('chú bé đần',sysdate(),'B4444444');
 insert into cmt(content,time,idacc) values('monkey',sysdate(),'B2111933');
 insert into cmt(content,time,idacc) values('dog',sysdate(),'B3333333');
 insert into cmt(content,time,idacc) values('afcasfcfvdgvsvzafcasfcfvdgvsvzafcasfcfvdgvsvzafcasfcfvdgvsvzafcasfcfvdgvsvzafcasfcfvdgvsvzafcasfcfvdgvsvzafcasfcfvdgvsvzafcasfcfvdgvsvzafcasfcfvdgvsvzafcasfcfvdgvsvzafcasfcfvdgvsvzafcasfcfvdgvsvzafcasfcfvdgvsvzafcasfcfvdgvsvzafcasfcfvdgvsvzafcasfcfvdgvsvzafcasfcfvdgvsvzafcasfcfvdgvsvzafcasfcfvdgvsvzafcasfcfvdgvsvzafcasfcfvdgvsvzafcasfcfvdgvsvzafcasfcfvdgvsvzafcasfcfvdgvsvzafcasfcfvdgvsvzafcasfcfvd',sysdate(),'B3333333');
@@ -143,7 +139,6 @@ insert into cmt(content,time,idacc) values('dog',sysdate(),'B3333333');
 insert into cmt(content,time,idacc) values('cow',sysdate(),'B3333333');
 insert into cmt(content,time,idacc) values('sfdfgdvcbhjxfvccvxzhvxbjhgasbdhajnvb xccb zxnc cxbbxcbncxkcnxjkxnccj á á á vjdkvhkkuchvukjhi',sysdate(),'B3333333');
 insert into cmt(content,time,idacc) values('mongki',sysdate(),'B2111933');
-insert into cmt(content,time,idacc) values('chú bé đần',sysdate(),'B4444444');
 insert into cmt(content,time,idacc) values('monkey',sysdate(),'B2111933');
 insert into cmt(content,time,idacc) values('dog',sysdate(),'B3333333');
 insert into cmt(content,time,idacc) values('afcasfcfvdgvsvzafcasfcfvdgvsvzafcasfcfvdgvsvzafcasfcfvdgvsvzafcasfcfvdgvsvzafcasfcfvdgvsvzafcasfcfvdgvsvzafcasfcfvdgvsvzafcasfcfvdgvsvzafcasfcfvdgvsvzafcasfcfvdgvsvzafcasfcfvdgvsvzafcasfcfvdgvsvzafcasfcfvdgvsvzafcasfcfvdgvsvzafcasfcfvdgvsvzafcasfcfvdgvsvzafcasfcfvdgvsvzafcasfcfvdgvsvzafcasfcfvdgvsvzafcasfcfvdgvsvzafcasfcfvdgvsvzafcasfcfvdgvsvzafcasfcfvdgvsvzafcasfcfvdgvsvzafcasfcfvdgvsvzafcasfcfvd',sysdate(),'B3333333');
