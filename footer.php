@@ -1,6 +1,5 @@
 <?php
-    
-    define('ROOT_URL', 'http://localhost/w0rm/');
+    define('ROOT_URL', 'http://localhost/W0rm/');
 
     $footer_logo = "CTF-Logo.png";
     if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
