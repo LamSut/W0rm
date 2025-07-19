@@ -1,8 +1,8 @@
 <?php
     $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? "https://" : "http://";
-    $host = $_SERVER['HTTP_HOST']; // ví dụ: 54.159.144.33
+    $host = $_SERVER['HTTP_HOST'];
 
-    define('ROOT_URL', $protocol . $host . '/W0rm/');
+    define('ROOT_URL', $protocol . $host);
 
     $footer_logo = "CTF-Logo.png";
     if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
