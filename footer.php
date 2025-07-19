@@ -1,9 +1,4 @@
 <?php
-    $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? "https://" : "http://";
-    $host = $_SERVER['HTTP_HOST'];
-
-    define('ROOT_URL', $protocol . $host);
-
     $footer_logo = "CTF-Logo.png";
     if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
         $footer_logo = "Dark-CTF-Logo.png";
@@ -13,7 +8,7 @@
 <section class="footer">
     <div class="footer-container">
         <div class="footer-box">
-            <?php echo "<img src='" . ROOT_URL . "/img/" . $footer_logo .  "' alt='W0rm'>";?>
+            <img src="/img/<?php echo $footer_logo; ?>" alt="W0rm">
             <p class="footer-text"> &copy Copyright <?= date('Y'); ?> CTF. All rights reserved.</p>
         </div>
         <div class="footer-box">
