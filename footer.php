@@ -13,7 +13,7 @@
 <section class="footer">
     <div class="footer-container">
         <div class="footer-box">
-            <?php echo "<img src='" . ROOT_URL . "img/" . $footer_logo .  "' alt='W0rm'>";?>
+            <?php echo "<img src='" . ROOT_URL . "/img/" . $footer_logo .  "' alt='W0rm'>";?>
             <p class="footer-text"> &copy Copyright <?= date('Y'); ?> CTF. All rights reserved.</p>
         </div>
         <div class="footer-box">
